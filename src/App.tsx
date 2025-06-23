@@ -1,10 +1,12 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { Toaster } from '@/components/ui/sonner';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
+import AIChatbot from '@/components/ai/AIChatbot';
 
 // Pages
 import Index from '@/pages/Index';
@@ -33,6 +35,20 @@ import BlogSystem from '@/components/blog/BlogSystem';
 import WebinarSystem from '@/components/webinar/WebinarSystem';
 
 function App() {
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+  const [isChatbotMinimized, setIsChatbotMinimized] = useState(false);
+
+  const toggleChatbot = () => {
+    setIsChatbotOpen(!isChatbotOpen);
+    if (!isChatbotOpen) {
+      setIsChatbotMinimized(false);
+    }
+  };
+
+  const minimizeChatbot = () => {
+    setIsChatbotMinimized(!isChatbotMinimized);
+  };
+
   return (
     <AuthProvider>
       <Router>
@@ -85,6 +101,15 @@ function App() {
           </main>
           <Footer />
           <Toaster />
+          
+          {/* Site-wide AI Chatbot */}
+          <AIChatbot 
+            isOpen={isChatbotOpen}
+            onToggle={toggleChatbot}
+            isMinimized={isChatbotMinimized}
+            onMinimize={minimizeChatbot}
+            courseContext="Finedge Finance Learning"
+          />
         </div>
       </Router>
     </AuthProvider>

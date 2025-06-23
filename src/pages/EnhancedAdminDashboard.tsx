@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -35,7 +34,7 @@ import {
   Download,
   RefreshCw
 } from 'lucide-react';
-import ContentApprovalSystem from '@/components/admin/ContentApprovalSystem';
+import ApprovalWorkflow from '@/components/admin/ApprovalWorkflow';
 import { useAuth } from '@/contexts/AuthContext';
 
 const EnhancedAdminDashboard: React.FC = () => {
@@ -140,46 +139,6 @@ const EnhancedAdminDashboard: React.FC = () => {
       action: 'scheduled webinar',
       time: '3 hours ago',
       status: 'approved'
-    }
-  ];
-
-  const pendingApprovals = [
-    {
-      id: '1',
-      type: 'Instructor Application',
-      name: 'Dr. Michael Rodriguez',
-      email: 'michael.r@email.com',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
-      submitted: '2 hours ago',
-      priority: 'high',
-      experience: '15 years in Investment Banking'
-    },
-    {
-      id: '2',
-      type: 'Course Content',
-      name: 'Advanced Options Trading',
-      instructor: 'Sarah Johnson',
-      submitted: '5 hours ago',
-      priority: 'medium',
-      category: 'Trading'
-    },
-    {
-      id: '3',
-      type: 'Webinar',
-      name: 'Market Analysis Workshop',
-      instructor: 'John Chen',
-      submitted: '1 day ago',
-      priority: 'low',
-      scheduledDate: '2024-02-15'
-    },
-    {
-      id: '4',
-      type: 'Blog Post',
-      name: 'Future of Cryptocurrency',
-      author: 'Emma Thompson',
-      submitted: '3 hours ago',
-      priority: 'medium',
-      category: 'Technology'
     }
   ];
 
@@ -331,27 +290,50 @@ const EnhancedAdminDashboard: React.FC = () => {
                   <CardDescription>Frequently used admin functions</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <Button className="w-full justify-start bg-blue-600 hover:bg-blue-700">
+                  <Button 
+                    className="w-full justify-start bg-blue-600 hover:bg-blue-700"
+                    onClick={() => setActiveTab('approvals')}
+                  >
                     <CheckCircle className="h-4 w-4 mr-2" />
                     Review Pending Approvals
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
+                  <Button 
+                    variant="outline" 
+                    className="w-full justify-start"
+                    onClick={() => setActiveTab('users')}
+                  >
                     <Users className="h-4 w-4 mr-2" />
                     Manage Users
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
+                  <Button 
+                    variant="outline" 
+                    className="w-full justify-start"
+                    onClick={() => setActiveTab('content')}
+                  >
                     <FileText className="h-4 w-4 mr-2" />
                     Content Moderation
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
+                  <Button 
+                    variant="outline" 
+                    className="w-full justify-start"
+                    onClick={() => setActiveTab('analytics')}
+                  >
                     <BarChart3 className="h-4 w-4 mr-2" />
                     View Analytics
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
+                  <Button 
+                    variant="outline" 
+                    className="w-full justify-start"
+                    onClick={() => setActiveTab('announcements')}
+                  >
                     <Bell className="h-4 w-4 mr-2" />
                     Send Announcement
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
+                  <Button 
+                    variant="outline" 
+                    className="w-full justify-start"
+                    onClick={() => setActiveTab('settings')}
+                  >
                     <Settings className="h-4 w-4 mr-2" />
                     Platform Settings
                   </Button>
@@ -361,7 +343,7 @@ const EnhancedAdminDashboard: React.FC = () => {
           </TabsContent>
 
           <TabsContent value="approvals" className="space-y-6">
-            <ContentApprovalSystem />
+            <ApprovalWorkflow />
           </TabsContent>
 
           <TabsContent value="users" className="space-y-6">
