@@ -56,27 +56,27 @@ function App() {
               
               {/* Protected Routes */}
               <Route path="/admin" element={
-                <ProtectedRoute requiredRole="admin">
+                <ProtectedRoute allowedRoles={['admin']}>
                   <AdminDashboard />
                 </ProtectedRoute>
               } />
               <Route path="/dashboard/student" element={
-                <ProtectedRoute requiredRole="student">
+                <ProtectedRoute allowedRoles={['student']}>
                   <StudentDashboard />
                 </ProtectedRoute>
               } />
               <Route path="/dashboard/instructor" element={
-                <ProtectedRoute requiredRole="instructor">
+                <ProtectedRoute allowedRoles={['instructor']}>
                   <InstructorDashboard />
                 </ProtectedRoute>
               } />
               <Route path="/dashboard/blogger" element={
-                <ProtectedRoute requiredRole="blogger">
+                <ProtectedRoute allowedRoles={['blogger']}>
                   <BloggerDashboard />
                 </ProtectedRoute>
               } />
               <Route path="/dashboard/content-writer" element={
-                <ProtectedRoute requiredRole="content-writer">
+                <ProtectedRoute allowedRoles={['content-writer']}>
                   <ContentWriterDashboard />
                 </ProtectedRoute>
               } />
