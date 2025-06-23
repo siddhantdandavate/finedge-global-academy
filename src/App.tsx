@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '@/contexts/AuthContext';
@@ -19,7 +18,7 @@ import InstructorsPage from '@/pages/InstructorsPage';
 import AboutPage from '@/pages/AboutPage';
 import ContactPage from '@/pages/ContactPage';
 import NotFound from '@/pages/NotFound';
-import AdminDashboard from '@/pages/AdminDashboard';
+import EnhancedAdminDashboard from '@/pages/EnhancedAdminDashboard';
 
 // Dashboards
 import StudentDashboard from '@/components/dashboards/StudentDashboard';
@@ -57,7 +56,7 @@ function App() {
               {/* Protected Routes */}
               <Route path="/admin" element={
                 <ProtectedRoute allowedRoles={['admin']}>
-                  <AdminDashboard />
+                  <EnhancedAdminDashboard />
                 </ProtectedRoute>
               } />
               <Route path="/dashboard/student" element={
