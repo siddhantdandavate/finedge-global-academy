@@ -3,9 +3,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { Toaster } from '@/components/ui/sonner';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import ProtectedRoute from '@/components/ProtectedRoute';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { ProtectedRoute } from '@/components/ProtectedRoute';
 
 // Pages
 import Index from '@/pages/Index';
