@@ -17,92 +17,92 @@ const InstructorsPage: React.FC = () => {
   const instructors = [
     {
       id: '1',
-      name: 'Dr. Sarah Johnson',
+      name: 'CA Anuj Mehra',
       title: 'Senior Investment Banker',
-      company: 'Goldman Sachs',
-      bio: 'Former VP at Goldman Sachs with 15+ years in investment banking. Expert in M&A, capital markets, and financial modeling.',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+      company: 'ICICI Bank',
+      bio: 'Former VP at ICICI Bank with 15+ years in investment banking. Expert in M&A, capital markets, and financial modeling for Indian markets.',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
       rating: 4.9,
       students: 12847,
       courses: 8,
-      specialties: ['Investment Banking', 'Financial Modeling', 'M&A'],
-      linkedin: 'https://linkedin.com/in/sarahjohnson',
-      twitter: 'https://twitter.com/sarahjohnson',
-      website: 'https://sarahjohnson.com'
+      specialties: ['Investment Banking', 'Financial Modeling', 'GST Compliance'],
+      linkedin: 'https://linkedin.com/in/anujmehra',
+      twitter: 'https://twitter.com/anujmehra',
+      website: 'https://anujmehra.com'
     },
     {
       id: '2',
-      name: 'Michael Chen',
+      name: 'CA Shalini Rao',
       title: 'Quantitative Analyst',
-      company: 'JPMorgan Chase',
-      bio: 'Quantitative analyst with expertise in risk management, derivatives pricing, and algorithmic trading strategies.',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+      company: 'Kotak Mahindra Bank',
+      bio: 'Quantitative analyst with expertise in risk management, derivatives pricing, and algorithmic trading strategies for Indian financial markets.',
+      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
       rating: 4.8,
       students: 9563,
       courses: 6,
       specialties: ['Risk Management', 'Derivatives', 'Algorithmic Trading'],
-      linkedin: 'https://linkedin.com/in/michaelchen',
+      linkedin: 'https://linkedin.com/in/shalinirao',
       twitter: null,
       website: null
     },
     {
       id: '3',
-      name: 'Emma Thompson',
+      name: 'CA Vikram Shah',
       title: 'Portfolio Manager',
-      company: 'BlackRock',
-      bio: 'Portfolio manager specializing in fixed income and alternative investments with 12 years of experience.',
-      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+      company: 'Axis Mutual Fund',
+      bio: 'Portfolio manager specializing in fixed income and alternative investments with 12 years of experience in Indian capital markets.',
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
       rating: 4.7,
       students: 7234,
       courses: 5,
       specialties: ['Portfolio Management', 'Fixed Income', 'Alternative Investments'],
-      linkedin: 'https://linkedin.com/in/emmathompson',
-      twitter: 'https://twitter.com/emmathompson',
-      website: 'https://emmathompson.com'
+      linkedin: 'https://linkedin.com/in/vikramshah',
+      twitter: 'https://twitter.com/vikramshah',
+      website: 'https://vikramshah.com'
     },
     {
       id: '4',
-      name: 'Alex Rodriguez',
-      title: 'Crypto Trading Expert',
-      company: 'Coinbase',
-      bio: 'Former institutional trader at Coinbase, specializing in cryptocurrency markets and DeFi protocols.',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+      name: 'CA Neha Kulkarni',
+      title: 'Tax & Compliance Expert',
+      company: 'Deloitte India',
+      bio: 'Former tax consultant at Deloitte India, specializing in GST, international taxation, and compliance for multinational corporations.',
+      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
       rating: 4.6,
       students: 5678,
       courses: 4,
-      specialties: ['Cryptocurrency', 'DeFi', 'Technical Analysis'],
-      linkedin: 'https://linkedin.com/in/alexrodriguez',
-      twitter: 'https://twitter.com/alexrodriguez',
+      specialties: ['GST Mastery', 'International Taxation', 'Tax Compliance'],
+      linkedin: 'https://linkedin.com/in/nehakulkarni',
+      twitter: 'https://twitter.com/nehakulkarni',
       website: null
     },
     {
       id: '5',
-      name: 'Dr. Jennifer Wang',
+      name: 'CA Rajesh Gupta',
       title: 'Corporate Finance Director',
-      company: 'Apple Inc.',
-      bio: 'Corporate finance director with extensive experience in capital budgeting, valuation, and strategic planning.',
-      avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face',
+      company: 'Tata Consultancy Services',
+      bio: 'Corporate finance director with extensive experience in capital budgeting, valuation, and strategic planning for Indian enterprises.',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
       rating: 4.5,
       students: 4321,
       courses: 3,
       specialties: ['Corporate Finance', 'Valuation', 'Strategic Planning'],
-      linkedin: 'https://linkedin.com/in/jenniferwang',
+      linkedin: 'https://linkedin.com/in/rajeshgupta',
       twitter: null,
-      website: 'https://jenniferwang.com'
+      website: 'https://rajeshgupta.com'
     },
     {
       id: '6',
-      name: 'Robert Kim',
-      title: 'Options Trading Specialist',
-      company: 'Interactive Brokers',
-      bio: 'Professional options trader with 20+ years experience. Expert in volatility trading and options strategies.',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
+      name: 'CA Priya Sharma',
+      title: 'Audit & Assurance Specialist',
+      company: 'EY India',
+      bio: 'Professional auditor with 18+ years experience in statutory audits, internal audits, and assurance services for Indian companies.',
+      avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face',
       rating: 4.8,
       students: 3456,
       courses: 7,
-      specialties: ['Options Trading', 'Volatility Trading', 'Risk Management'],
-      linkedin: 'https://linkedin.com/in/robertkim',
-      twitter: 'https://twitter.com/robertkim',
+      specialties: ['Statutory Audit', 'Internal Audit', 'Assurance Services'],
+      linkedin: 'https://linkedin.com/in/priyasharma',
+      twitter: 'https://twitter.com/priyasharma',
       website: null
     }
   ];
@@ -112,36 +112,36 @@ const InstructorsPage: React.FC = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Expert Instructors</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Expert CA Instructors</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Learn from industry professionals with decades of experience at top financial institutions
+            Learn from India's top Chartered Accountants with decades of experience at leading financial institutions
           </p>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-          <Card>
+          <Card className="border-l-4 border-l-orange-500">
             <CardContent className="p-6 text-center">
-              <Award className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+              <Award className="h-8 w-8 text-orange-600 mx-auto mb-2" />
               <p className="text-2xl font-bold text-gray-900">25+</p>
-              <p className="text-sm text-gray-600">Expert Instructors</p>
+              <p className="text-sm text-gray-600">Expert CA Instructors</p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="border-l-4 border-l-blue-500">
             <CardContent className="p-6 text-center">
-              <Users className="h-8 w-8 text-green-600 mx-auto mb-2" />
+              <Users className="h-8 w-8 text-blue-600 mx-auto mb-2" />
               <p className="text-2xl font-bold text-gray-900">50K+</p>
               <p className="text-sm text-gray-600">Students Taught</p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="border-l-4 border-l-green-500">
             <CardContent className="p-6 text-center">
-              <BookOpen className="h-8 w-8 text-purple-600 mx-auto mb-2" />
+              <BookOpen className="h-8 w-8 text-green-600 mx-auto mb-2" />
               <p className="text-2xl font-bold text-gray-900">100+</p>
               <p className="text-sm text-gray-600">Courses Created</p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="border-l-4 border-l-purple-500">
             <CardContent className="p-6 text-center">
               <Star className="h-8 w-8 text-yellow-600 mx-auto mb-2" />
               <p className="text-2xl font-bold text-gray-900">4.7★</p>
@@ -153,15 +153,17 @@ const InstructorsPage: React.FC = () => {
         {/* Instructors Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {instructors.map((instructor) => (
-            <Card key={instructor.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <CardHeader className="text-center">
-                <Avatar className="w-24 h-24 mx-auto mb-4">
+            <Card key={instructor.id} className="overflow-hidden hover:shadow-lg transition-shadow border-t-4 border-t-orange-400">
+              <CardHeader className="text-center bg-gradient-to-br from-orange-50 to-blue-50">
+                <Avatar className="w-24 h-24 mx-auto mb-4 border-4 border-white shadow-lg">
                   <AvatarImage src={instructor.avatar} alt={instructor.name} />
-                  <AvatarFallback>{instructor.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                  <AvatarFallback className="bg-gradient-to-br from-orange-400 to-blue-500 text-white">
+                    {instructor.name.split(' ').map(n => n[0]).join('')}
+                  </AvatarFallback>
                 </Avatar>
-                <CardTitle className="text-xl">{instructor.name}</CardTitle>
+                <CardTitle className="text-xl text-gray-800">{instructor.name}</CardTitle>
                 <CardDescription className="text-center">
-                  <p className="font-medium">{instructor.title}</p>
+                  <p className="font-medium text-gray-700">{instructor.title}</p>
                   <p className="text-sm text-blue-600">{instructor.company}</p>
                 </CardDescription>
               </CardHeader>
@@ -176,7 +178,7 @@ const InstructorsPage: React.FC = () => {
                   <p className="text-sm font-medium text-gray-700 mb-2">Specialties:</p>
                   <div className="flex flex-wrap gap-1">
                     {instructor.specialties.map((specialty, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs">
+                      <Badge key={index} variant="secondary" className="text-xs bg-gradient-to-r from-orange-100 to-blue-100 text-gray-700">
                         {specialty}
                       </Badge>
                     ))}
@@ -209,7 +211,7 @@ const InstructorsPage: React.FC = () => {
                 </div>
                 
                 {/* Social Links */}
-                <div className="flex justify-center space-x-3 pt-4 border-t">
+                <div className="flex justify-center space-x-3 pt-4 border-t border-gray-100">
                   {instructor.linkedin && (
                     <a 
                       href={instructor.linkedin} 

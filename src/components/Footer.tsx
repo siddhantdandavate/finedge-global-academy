@@ -59,32 +59,32 @@ export const Footer: React.FC = () => {
           {/* Brand & Description */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-blue-600 rounded-lg flex items-center justify-center">
                 <BookOpen className="h-6 w-6 text-white" />
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+              <span className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-blue-400 bg-clip-text text-transparent">
                 Finedge
               </span>
             </Link>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Empowering finance professionals worldwide with comprehensive courses, 
-              expert-led training, and cutting-edge learning tools. Join 250,000+ learners 
+              Empowering Indian Chartered Accountants worldwide with comprehensive courses, 
+              expert-led training, and cutting-edge learning tools. Join 250,000+ CA professionals 
               advancing their careers with Finedge.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-center space-x-3 text-gray-300">
-                <Mail className="h-4 w-4 text-blue-400" />
-                <span>support@finedge.com</span>
+                <Mail className="h-4 w-4 text-orange-400" />
+                <span>support@finedge.in</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
-                <Phone className="h-4 w-4 text-blue-400" />
-                <span>+1 (555) 123-4567</span>
+                <Phone className="h-4 w-4 text-orange-400" />
+                <span>+91 98765 43210</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
-                <MapPin className="h-4 w-4 text-blue-400" />
-                <span>123 Finance Street, New York, NY 10001</span>
+                <MapPin className="h-4 w-4 text-orange-400" />
+                <span>Bandra Kurla Complex, Mumbai, Maharashtra 400051</span>
               </div>
             </div>
 
@@ -116,7 +116,7 @@ export const Footer: React.FC = () => {
                 <li key={link.name}>
                   <Link 
                     to={link.href} 
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-orange-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -133,7 +133,7 @@ export const Footer: React.FC = () => {
                 <li key={link.name}>
                   <Link 
                     to={link.href} 
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-orange-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -150,7 +150,7 @@ export const Footer: React.FC = () => {
                 <li key={link.name}>
                   <Link 
                     to={link.href} 
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-orange-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -165,14 +165,14 @@ export const Footer: React.FC = () => {
           <div className="max-w-md">
             <h3 className="text-lg font-semibold mb-4 text-white">Stay Updated</h3>
             <p className="text-gray-300 mb-4">
-              Get the latest course updates, finance insights, and exclusive offers.
+              Get the latest course updates, finance insights, and exclusive offers for CA professionals.
             </p>
             <div className="flex space-x-2">
               <Input 
                 placeholder="Enter your email" 
                 className="bg-gray-800 border-gray-700 text-white placeholder-gray-400"
               />
-              <Button className="bg-blue-600 hover:bg-blue-700 whitespace-nowrap">
+              <Button className="bg-gradient-to-r from-orange-500 to-blue-600 hover:from-orange-600 hover:to-blue-700 whitespace-nowrap">
                 Subscribe
               </Button>
             </div>
@@ -186,11 +186,11 @@ export const Footer: React.FC = () => {
             Learn on the go with our mobile app. Available on iOS and Android.
           </p>
           <div className="flex space-x-4">
-            <Button variant="outline" className="border-gray-600 text-gray-300 hover:text-white">
+            <Button variant="outline" className="border-gray-600 text-gray-300 hover:text-white hover:border-orange-400">
               <Download className="h-4 w-4 mr-2" />
               App Store
             </Button>
-            <Button variant="outline" className="border-gray-600 text-gray-300 hover:text-white">
+            <Button variant="outline" className="border-gray-600 text-gray-300 hover:text-white hover:border-orange-400">
               <Download className="h-4 w-4 mr-2" />
               Google Play
             </Button>
@@ -199,18 +199,22 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-gray-800 bg-gradient-to-r from-orange-900/20 to-blue-900/20">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {currentYear} Finedge. All rights reserved. | Made with ❤️ for finance professionals worldwide.
+            <div className="text-gray-400 text-sm mb-4 md:mb-0 flex items-center">
+              <span>© {currentYear} Finedge. All rights reserved.</span>
+              <span className="mx-2">|</span>
+              <span className="flex items-center">
+                Made in 🇮🇳 India | Empowering Chartered Accountants Globally
+              </span>
             </div>
             <div className="flex space-x-6 text-sm">
               {footerLinks.legal.map((link) => (
                 <Link 
                   key={link.name}
                   to={link.href} 
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-orange-400 transition-colors"
                 >
                   {link.name}
                 </Link>
