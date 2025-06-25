@@ -62,6 +62,10 @@ export const Header: React.FC = () => {
     }
   };
 
+  const handleNotificationClick = () => {
+    navigate('/notifications');
+  };
+
   const languages = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
     { code: 'es', name: 'Español', flag: '🇪🇸' },
@@ -75,12 +79,12 @@ export const Header: React.FC = () => {
     <header className="bg-white shadow-sm border-b sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
+          {/* Logo - Fixed alignment */}
+          <Link to="/" className="flex items-center space-x-3 flex-shrink-0">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
               <BookOpen className="h-6 w-6 text-white" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent whitespace-nowrap">
               Finedge
             </span>
           </Link>
@@ -131,7 +135,7 @@ export const Header: React.FC = () => {
                   {languages.find(lang => lang.code === language)?.flag}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent align="end" className="bg-white z-50">
                 {languages.map((lang) => (
                   <DropdownMenuItem 
                     key={lang.code} 
@@ -148,8 +152,13 @@ export const Header: React.FC = () => {
 
             {user ? (
               <div className="flex items-center space-x-3">
-                {/* Notifications */}
-                <Button variant="ghost" size="sm" className="relative">
+                {/* Notifications - Made functional */}
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="relative"
+                  onClick={handleNotificationClick}
+                >
                   <Bell className="h-4 w-4" />
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
                 </Button>
@@ -168,7 +177,7 @@ export const Header: React.FC = () => {
                       </div>
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuContent align="end" className="w-56 bg-white z-50">
                     <div className="px-3 py-2">
                       <div className="font-medium">{user.name}</div>
                       <div className="text-sm text-gray-500">{user.email}</div>
@@ -183,9 +192,11 @@ export const Header: React.FC = () => {
                         Dashboard
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Settings className="h-4 w-4 mr-2" />
-                      Settings
+                    <DropdownMenuItem asChild>
+                      <Link to="/settings" className="flex items-center">
+                        <Settings className="h-4 w-4 mr-2" />
+                        Settings
+                      </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={handleLogout} className="text-red-600">

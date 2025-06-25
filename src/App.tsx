@@ -1,65 +1,35 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { Toaster } from '@/components/ui/sonner';
 import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { ProtectedRoute } from '@/components/ProtectedRoute';
-import AIChatbot from '@/components/ai/AIChatbot';
+import Footer from '@/components/Footer';
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 // Pages
-import Index from '@/pages/Index';
 import HomePage from '@/pages/HomePage';
 import LoginPage from '@/pages/LoginPage';
 import RegisterPage from '@/pages/RegisterPage';
 import CoursesPage from '@/pages/CoursesPage';
-import CoursePlayerPage from '@/pages/CoursePlayer';
-import PaymentPage from '@/pages/PaymentPage';
+import CoursePlayer from '@/pages/CoursePlayer';
 import InstructorsPage from '@/pages/InstructorsPage';
+import PaymentPage from '@/pages/PaymentPage';
 import AboutPage from '@/pages/AboutPage';
 import ContactPage from '@/pages/ContactPage';
+import BlogDetail from '@/pages/BlogDetail';
 import NotFound from '@/pages/NotFound';
-import EnhancedAdminDashboard from '@/pages/EnhancedAdminDashboard';
+import NotificationCenter from '@/pages/NotificationCenter';
+import UserSettings from '@/pages/UserSettings';
 
-// Enhanced Dashboards
-import AdminDashboard from '@/components/dashboards/AdminDashboard';
+// Dashboards
 import StudentDashboard from '@/components/dashboards/StudentDashboard';
 import InstructorDashboard from '@/components/dashboards/InstructorDashboard';
-import BloggerDashboard from '@/components/dashboards/BloggerDashboard';
+import AdminDashboard from '@/components/dashboards/AdminDashboard';
 import ContentWriterDashboard from '@/components/dashboards/ContentWriterDashboard';
-
-// Blog System
-import BlogSystem from '@/components/blog/BlogSystem';
-import BlogList from '@/components/blog/BlogList';
-import BlogDetail from '@/pages/BlogDetail';
-
-// Settings and Notifications
-import UserSettings from '@/pages/UserSettings';
-import NotificationCenter from '@/pages/NotificationCenter';
-
-// Webinar System
-import WebinarSystem from '@/components/webinar/WebinarSystem';
-
-// AI Tools
-import AIResumeBuilder from '@/components/ai/AIResumeBuilder';
-import AIBlogAssistant from '@/components/ai/AIBlogAssistant';
+import BloggerDashboard from '@/components/dashboards/BloggerDashboard';
 
 function App() {
-  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
-  const [isChatbotMinimized, setIsChatbotMinimized] = useState(false);
-
-  const toggleChatbot = () => {
-    setIsChatbotOpen(!isChatbotOpen);
-    if (!isChatbotOpen) {
-      setIsChatbotMinimized(false);
-    }
-  };
-
-  const minimizeChatbot = () => {
-    setIsChatbotMinimized(!isChatbotMinimized);
-  };
-
   return (
     <AuthProvider>
       <Router>
@@ -67,85 +37,73 @@ function App() {
           <Header />
           <main className="flex-1">
             <Routes>
+              {/* Public Routes */}
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/courses" element={<CoursesPage />} />
-              <Route path="/course/:courseId/payment" element={<PaymentPage />} />
-              <Route path="/course/:courseId/player" element={<CoursePlayerPage />} />
-              <Route path="/course/:courseId" element={<CoursePlayerPage />} />
+              <Route path="/course/:id" element={<CoursePlayer />} />
               <Route path="/instructors" element={<InstructorsPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
-              <Route path="/blog" element={<BlogList />} />
               <Route path="/blog/:id" element={<BlogDetail />} />
-              <Route path="/webinar/*" element={<WebinarSystem />} />
               
-              {/* AI Tools */}
-              <Route path="/ai/resume-builder" element={
-                <ProtectedRoute allowedRoles={['student']}>
-                  <AIResumeBuilder />
-                </ProtectedRoute>
-              } />
-              <Route path="/ai/blog-assistant" element={
-                <ProtectedRoute allowedRoles={['blogger', 'content-writer']}>
-                  <AIBlogAssistant />
-                </ProtectedRoute>
-              } />
-
-              {/* Settings and Notifications */}
-              <Route path="/settings" element={
+              {/* Protected Routes */}
+              <Route path="/payment" element={
                 <ProtectedRoute>
-                  <UserSettings />
+                  <PaymentPage />
                 </ProtectedRoute>
               } />
+              
               <Route path="/notifications" element={
                 <ProtectedRoute>
                   <NotificationCenter />
                 </ProtectedRoute>
               } />
               
-              {/* Protected Role-based Dashboards */}
+              <Route path="/settings" element={
+                <ProtectedRoute>
+                  <UserSettings />
+                </ProtectedRoute>
+              } />
+
+              {/* Role-based Dashboard Routes */}
+              <Route path="/student/*" element={
+                <ProtectedRoute allowedRoles={['student']}>
+                  <StudentDashboard />
+                </ProtectedRoute>
+              } />
+              
+              <Route path="/instructor/*" element={
+                <ProtectedRoute allowedRoles={['instructor']}>
+                  <InstructorDashboard />
+                </ProtectedRoute>
+              } />
+              
               <Route path="/admin/*" element={
                 <ProtectedRoute allowedRoles={['admin']}>
                   <AdminDashboard />
                 </ProtectedRoute>
               } />
-              <Route path="/dashboard/student/*" element={
-                <ProtectedRoute allowedRoles={['student']}>
-                  <StudentDashboard />
-                </ProtectedRoute>
-              } />
-              <Route path="/dashboard/instructor/*" element={
-                <ProtectedRoute allowedRoles={['instructor']}>
-                  <InstructorDashboard />
-                </ProtectedRoute>
-              } />
-              <Route path="/dashboard/blogger/*" element={
-                <ProtectedRoute allowedRoles={['blogger']}>
-                  <BloggerDashboard />
-                </ProtectedRoute>
-              } />
-              <Route path="/dashboard/content-writer/*" element={
+              
+              <Route path="/content-writer/*" element={
                 <ProtectedRoute allowedRoles={['content-writer']}>
                   <ContentWriterDashboard />
                 </ProtectedRoute>
               } />
               
+              <Route path="/blogger/*" element={
+                <ProtectedRoute allowedRoles={['blogger']}>
+                  <BloggerDashboard />
+                </ProtectedRoute>
+              } />
+
+              {/* 404 Route */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />
           <Toaster />
-          
-          {/* Site-wide AI Chatbot */}
-          <AIChatbot 
-            isOpen={isChatbotOpen}
-            onToggle={toggleChatbot}
-            isMinimized={isChatbotMinimized}
-            onMinimize={minimizeChatbot}
-            courseContext="Finedge Finance Learning"
-          />
         </div>
       </Router>
     </AuthProvider>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -25,15 +24,59 @@ import {
   MessageSquare,
   Calendar,
   Award,
-  Globe
+  Globe,
+  Star
 } from 'lucide-react';
 import ApprovalWorkflow from '@/components/admin/ApprovalWorkflow';
 import UserSettings from '@/pages/UserSettings';
 import NotificationCenter from '@/pages/NotificationCenter';
+import FeedbackList from '@/components/feedback/FeedbackList';
+import { Feedback } from '@/types/feedback';
 
 const AdminDashboard: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const location = useLocation();
+
+  // Mock feedback data for admin view
+  const [feedbacks] = useState<Feedback[]>([
+    {
+      id: '1',
+      studentId: 'student1',
+      studentName: 'John Doe',
+      type: 'course',
+      targetId: 'course1',
+      targetName: 'Advanced Financial Analysis',
+      rating: 5,
+      comment: 'Excellent course with practical examples. The instructor was very knowledgeable.',
+      isAnonymous: false,
+      createdAt: '2024-01-20',
+      status: 'pending'
+    },
+    {
+      id: '2',
+      studentId: 'student2',
+      studentName: 'Anonymous User',
+      type: 'instructor',
+      targetId: 'instructor1',
+      targetName: 'Dr. Sarah Johnson',
+      rating: 4,
+      comment: 'Great teaching style, but could use more real-world examples.',
+      isAnonymous: true,
+      createdAt: '2024-01-19',
+      status: 'reviewed'
+    },
+    {
+      id: '3',
+      studentId: 'student3',
+      studentName: 'Alice Smith',
+      type: 'platform',
+      rating: 3,
+      comment: 'The platform is good but navigation could be improved.',
+      isAnonymous: false,
+      createdAt: '2024-01-18',
+      status: 'pending'
+    }
+  ]);
 
   const sidebarItems = [
     { icon: LayoutDashboard, label: 'Overview', path: '/admin' },
@@ -42,6 +85,7 @@ const AdminDashboard: React.FC = () => {
     { icon: BookOpen, label: 'Course Management', path: '/admin/courses' },
     { icon: FileText, label: 'Content Management', path: '/admin/content' },
     { icon: Video, label: 'Media Library', path: '/admin/media' },
+    { icon: Star, label: 'Feedback', path: '/admin/feedback' },
     { icon: TrendingUp, label: 'Analytics', path: '/admin/analytics' },
     { icon: DollarSign, label: 'Revenue', path: '/admin/revenue' },
     { icon: Bell, label: 'Notifications', path: '/admin/notifications' },
@@ -130,6 +174,7 @@ const AdminDashboard: React.FC = () => {
           <Route path="/courses" element={<CourseManagement />} />
           <Route path="/content" element={<ContentManagement />} />
           <Route path="/media" element={<MediaLibrary />} />
+          <Route path="/feedback" element={<FeedbackManagement feedbacks={feedbacks} />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/revenue" element={<RevenueManagement />} />  
           <Route path="/notifications" element={<NotificationCenter />} />
@@ -254,6 +299,66 @@ const AdminOverview: React.FC<{
     </div>
   );
 };
+
+// Feedback Management Component
+const FeedbackManagement: React.FC<{ feedbacks: Feedback[] }> = ({ feedbacks }) => (
+  <div className="flex-1 p-6 overflow-y-auto">
+    <div className="mb-8">
+      <h1 className="text-3xl font-bold text-gray-900 mb-2">Feedback Management</h1>
+      <p className="text-gray-600">Review and manage student feedback across the platform</p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <Card>
+        <CardContent className="p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600 mb-1">Total Feedback</p>
+              <p className="text-3xl font-bold text-gray-900">{feedbacks.length}</p>
+            </div>
+            <div className="p-3 rounded-full bg-blue-100">
+              <MessageSquare className="h-6 w-6 text-blue-600" />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+      
+      <Card>
+        <CardContent className="p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600 mb-1">Average Rating</p>
+              <p className="text-3xl font-bold text-gray-900">
+                {(feedbacks.reduce((sum, f) => sum + f.rating, 0) / feedbacks.length).toFixed(1)}
+              </p>
+            </div>
+            <div className="p-3 rounded-full bg-yellow-100">
+              <Star className="h-6 w-6 text-yellow-600" />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+      
+      <Card>
+        <CardContent className="p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600 mb-1">Pending Review</p>
+              <p className="text-3xl font-bold text-gray-900">
+                {feedbacks.filter(f => f.status === 'pending').length}
+              </p>
+            </div>
+            <div className="p-3 rounded-full bg-orange-100">
+              <Clock className="h-6 w-6 text-orange-600" />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+
+    <FeedbackList feedbacks={feedbacks} title="All Student Feedback" />
+  </div>
+);
 
 // Placeholder components for other admin sections
 const UserManagement: React.FC = () => (
