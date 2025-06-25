@@ -17,7 +17,7 @@ import {
   DollarSign,
   Users,
   Trash2,
-  MarkAsUnread
+  Mail
 } from 'lucide-react';
 
 interface Notification {
@@ -304,7 +304,7 @@ const NotificationCard: React.FC<{
                 onClick={() => onMarkAsUnread(notification.id)}
                 className="text-gray-600 hover:text-gray-700"
               >
-                <MarkAsUnread className="h-4 w-4" />
+                <Mail className="h-4 w-4" />
               </Button>
             )}
             <Button
