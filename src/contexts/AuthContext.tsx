@@ -67,6 +67,24 @@ const mockUsers: (User & { password: string })[] = [
   },
 ];
 
+// Role-based redirect mapping
+const getRoleRedirectPath = (role: UserRole): string => {
+  switch (role) {
+    case 'admin':
+      return '/admin';
+    case 'instructor':
+      return '/dashboard/instructor';
+    case 'student':
+      return '/dashboard/student';
+    case 'content-writer':
+      return '/dashboard/content-writer';
+    case 'blogger':
+      return '/dashboard/blogger';
+    default:
+      return '/';
+  }
+};
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -91,6 +109,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const { password: _, ...userWithoutPassword } = foundUser;
         setUser(userWithoutPassword);
         localStorage.setItem('finedge_user', JSON.stringify(userWithoutPassword));
+        
+        // Redirect to role-specific dashboard
+        const redirectPath = getRoleRedirectPath(userWithoutPassword.role);
+        window.location.href = redirectPath;
+        
         return true;
       }
       return false;
@@ -115,6 +138,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       setUser(newUser);
       localStorage.setItem('finedge_user', JSON.stringify(newUser));
+      
+      // Redirect to role-specific dashboard
+      const redirectPath = getRoleRedirectPath(newUser.role);
+      window.location.href = redirectPath;
+      
       return true;
     } finally {
       setIsLoading(false);
@@ -124,6 +152,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = () => {
     setUser(null);
     localStorage.removeItem('finedge_user');
+    window.location.href = '/';
   };
 
   return (

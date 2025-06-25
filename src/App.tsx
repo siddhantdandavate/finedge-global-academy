@@ -22,7 +22,8 @@ import ContactPage from '@/pages/ContactPage';
 import NotFound from '@/pages/NotFound';
 import EnhancedAdminDashboard from '@/pages/EnhancedAdminDashboard';
 
-// Dashboards
+// Enhanced Dashboards
+import AdminDashboard from '@/components/dashboards/AdminDashboard';
 import StudentDashboard from '@/components/dashboards/StudentDashboard';
 import InstructorDashboard from '@/components/dashboards/InstructorDashboard';
 import BloggerDashboard from '@/components/dashboards/BloggerDashboard';
@@ -30,9 +31,19 @@ import ContentWriterDashboard from '@/components/dashboards/ContentWriterDashboa
 
 // Blog System
 import BlogSystem from '@/components/blog/BlogSystem';
+import BlogList from '@/components/blog/BlogList';
+import BlogDetail from '@/pages/BlogDetail';
+
+// Settings and Notifications
+import UserSettings from '@/pages/UserSettings';
+import NotificationCenter from '@/pages/NotificationCenter';
 
 // Webinar System
 import WebinarSystem from '@/components/webinar/WebinarSystem';
+
+// AI Tools
+import AIResumeBuilder from '@/components/ai/AIResumeBuilder';
+import AIBlogAssistant from '@/components/ai/AIBlogAssistant';
 
 function App() {
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
@@ -66,31 +77,56 @@ function App() {
               <Route path="/instructors" element={<InstructorsPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
-              <Route path="/blog/*" element={<BlogSystem />} />
+              <Route path="/blog" element={<BlogList />} />
+              <Route path="/blog/:id" element={<BlogDetail />} />
               <Route path="/webinar/*" element={<WebinarSystem />} />
               
-              {/* Protected Routes */}
-              <Route path="/admin" element={
-                <ProtectedRoute allowedRoles={['admin']}>
-                  <EnhancedAdminDashboard />
+              {/* AI Tools */}
+              <Route path="/ai/resume-builder" element={
+                <ProtectedRoute allowedRoles={['student']}>
+                  <AIResumeBuilder />
                 </ProtectedRoute>
               } />
-              <Route path="/dashboard/student" element={
+              <Route path="/ai/blog-assistant" element={
+                <ProtectedRoute allowedRoles={['blogger', 'content-writer']}>
+                  <AIBlogAssistant />
+                </ProtectedRoute>
+              } />
+
+              {/* Settings and Notifications */}
+              <Route path="/settings" element={
+                <ProtectedRoute>
+                  <UserSettings />
+                </ProtectedRoute>
+              } />
+              <Route path="/notifications" element={
+                <ProtectedRoute>
+                  <NotificationCenter />
+                </ProtectedRoute>
+              } />
+              
+              {/* Protected Role-based Dashboards */}
+              <Route path="/admin/*" element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/dashboard/student/*" element={
                 <ProtectedRoute allowedRoles={['student']}>
                   <StudentDashboard />
                 </ProtectedRoute>
               } />
-              <Route path="/dashboard/instructor" element={
+              <Route path="/dashboard/instructor/*" element={
                 <ProtectedRoute allowedRoles={['instructor']}>
                   <InstructorDashboard />
                 </ProtectedRoute>
               } />
-              <Route path="/dashboard/blogger" element={
+              <Route path="/dashboard/blogger/*" element={
                 <ProtectedRoute allowedRoles={['blogger']}>
                   <BloggerDashboard />
                 </ProtectedRoute>
               } />
-              <Route path="/dashboard/content-writer" element={
+              <Route path="/dashboard/content-writer/*" element={
                 <ProtectedRoute allowedRoles={['content-writer']}>
                   <ContentWriterDashboard />
                 </ProtectedRoute>
