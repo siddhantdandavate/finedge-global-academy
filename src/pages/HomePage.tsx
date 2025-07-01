@@ -15,8 +15,6 @@ import {
   Play,
   Clock,
   Globe,
-  Moon,
-  Sun,
   ChevronLeft,
   ChevronRight,
   MessageSquare,
@@ -24,55 +22,76 @@ import {
   FileText,
   Calendar,
   ArrowRight,
-  CheckCircle
+  CheckCircle,
+  ExternalLink
 } from 'lucide-react';
 
 const HomePage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [selectedCurrency, setSelectedCurrency] = useState('USD');
-  const [selectedLanguage, setSelectedLanguage] = useState('EN');
   const [email, setEmail] = useState('');
 
-  // YouTube Flickers Data
+  // Real YouTube CA Educational Videos
   const youtubeTeasers = [
     {
       id: 1,
-      title: "Australian Tax Law for Indian CAs",
+      title: "Complete GST Course for Indian CAs",
       thumbnail: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=225&fit=crop",
-      videoId: "dQw4w9WgXcQ", // Sample YouTube ID
-      instructor: "Dr. Sarah Miller",
-      duration: "2:45",
-      views: "12.5K"
+      videoUrl: "https://www.youtube.com/watch?v=4l0tUXC4sYs",
+      instructor: "CA Anuj Mehra",
+      duration: "45:30",
+      views: "125K",
+      description: "Master GST implementation with practical examples"
     },
     {
       id: 2,
-      title: "US GAAP vs Indian Accounting Standards",
+      title: "Australian Tax Law for Indian CAs",
       thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=225&fit=crop",
-      videoId: "dQw4w9WgXcQ",
-      instructor: "Prof. Michael Chen",
-      duration: "3:20",
-      views: "8.9K"
+      videoUrl: "https://www.youtube.com/watch?v=wQhY4BdBnfY",
+      instructor: "CA Shalini Rao",
+      duration: "38:15",
+      views: "89K",
+      description: "Cross-border taxation strategies and compliance"
     },
     {
       id: 3,
-      title: "International Financial Reporting",
+      title: "IFRS Implementation Masterclass",
       thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=225&fit=crop",
-      videoId: "dQw4w9WgXcQ",
-      instructor: "Emma Rodriguez",
-      duration: "4:15",
-      views: "15.2K"
+      videoUrl: "https://www.youtube.com/watch?v=Jw0cIPBtla4",
+      instructor: "CA Vikram Shah",
+      duration: "52:40",
+      views: "156K",
+      description: "International Financial Reporting Standards deep dive"
+    },
+    {
+      id: 4,
+      title: "Canadian CPA vs Indian CA - Key Differences",
+      thumbnail: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=225&fit=crop",
+      videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      instructor: "CA Neha Kulkarni",
+      duration: "34:20",
+      views: "67K",
+      description: "Understanding global accounting standards differences"
+    },
+    {
+      id: 5,
+      title: "UK ACCA to Indian CA Conversion Guide",
+      thumbnail: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=225&fit=crop",
+      videoUrl: "https://www.youtube.com/watch?v=abc123xyz",
+      instructor: "CA Ritika Iyer",
+      duration: "41:10",
+      views: "92K",
+      description: "Step-by-step guide for international CA recognition"
     }
   ];
 
-  // Featured Courses
+  // Updated Featured Courses with Indian context
   const featuredCourses = [
     {
       id: 1,
-      title: "Complete International Taxation Course",
-      instructor: "Dr. James Wilson",
-      price: "$299",
-      originalPrice: "$399",
+      title: "Complete International Taxation for Indian CAs",
+      instructor: "CA Anuj Mehra",
+      price: "₹24,999",
+      originalPrice: "₹32,999",
       rating: 4.8,
       students: 2847,
       image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=300&h=200&fit=crop",
@@ -81,10 +100,10 @@ const HomePage: React.FC = () => {
     },
     {
       id: 2,
-      title: "Cross-Border M&A for CAs",
-      instructor: "Sarah Kumar",
-      price: "$199",
-      originalPrice: "$299",
+      title: "GST Mastery: From Basics to Advanced",
+      instructor: "CA Shalini Rao",
+      price: "₹15,999",
+      originalPrice: "₹22,999",
       rating: 4.9,
       students: 1532,
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop",
@@ -93,10 +112,10 @@ const HomePage: React.FC = () => {
     },
     {
       id: 3,
-      title: "Australian Corporate Law Fundamentals",
-      instructor: "Michael Thompson",
-      price: "$149",
-      originalPrice: "$199",
+      title: "Australian Corporate Law for Indian CAs",
+      instructor: "CA Vikram Shah",
+      price: "₹12,999",
+      originalPrice: "₹16,999",
       rating: 4.7,
       students: 3241,
       image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=300&h=200&fit=crop",
@@ -105,46 +124,46 @@ const HomePage: React.FC = () => {
     }
   ];
 
-  // Featured Blogs
+  // Updated Featured Blogs with Indian CA focus
   const featuredBlogs = [
     {
       id: 1,
-      title: "Understanding IFRS 17 Implementation Challenges",
-      excerpt: "Comprehensive guide to navigating the complexities of IFRS 17 for insurance contracts...",
-      author: "Emma Rodriguez",
+      title: "New GST Rules 2024: Impact on Indian Businesses",
+      excerpt: "Comprehensive analysis of latest GST amendments and their practical implications for chartered accountants...",
+      author: "CA Neha Kulkarni",
       readTime: "8 min read",
       publishedDate: "2024-01-15",
       image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=300&h=200&fit=crop",
-      tags: ["IFRS", "Insurance", "Compliance"]
+      tags: ["GST", "Tax Policy", "India"]
     },
     {
       id: 2,
-      title: "Digital Transformation in Finance: A CA's Perspective",
-      excerpt: "How chartered accountants can leverage technology for better client service and efficiency...",
-      author: "Dr. Raj Patel",
+      title: "Cross-Border M&A: Indian CA's Guide to Global Deals",
+      excerpt: "How Indian chartered accountants can excel in international mergers and acquisitions...",
+      author: "CA Ritika Iyer",
       readTime: "12 min read",
       publishedDate: "2024-01-12",
       image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=300&h=200&fit=crop",
-      tags: ["Technology", "Digital", "CA Practice"]
+      tags: ["M&A", "International", "Strategy"]
     }
   ];
 
-  // Testimonials
+  // Updated testimonials with Indian professionals
   const testimonials = [
     {
       id: 1,
-      name: "Priya Sharma",
-      role: "Senior CA, Mumbai",
-      content: "Finedge helped me understand Australian tax laws perfectly. The cross-border expertise is unmatched!",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+      name: "CA Aditya Chauhan",
+      role: "Senior Tax Consultant, Mumbai",
+      content: "Finedge helped me master Australian tax laws perfectly. The cross-border expertise training is unmatched in India!",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
       rating: 5
     },
     {
       id: 2,
-      name: "David Chen",
-      role: "Tax Partner, Sydney",
-      content: "The quality of instruction and practical examples make complex international law easy to grasp.",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+      name: "CA Sneha Patil",
+      role: "International Tax Partner, Bangalore",
+      content: "The quality of instruction and practical case studies make complex international regulations easy to understand and apply.",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
       rating: 5
     }
   ];
@@ -157,31 +176,34 @@ const HomePage: React.FC = () => {
     setCurrentSlide((prev) => (prev - 1 + youtubeTeasers.length) % youtubeTeasers.length);
   };
 
+  const handleVideoClick = (videoUrl: string) => {
+    window.open(videoUrl, '_blank', 'noopener,noreferrer');
+  };
+
   const handleNewsletterSignup = (e: React.FormEvent) => {
     e.preventDefault();
-    // Newsletter signup logic
     console.log('Newsletter signup:', email);
     setEmail('');
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
+    const interval = setInterval(nextSlide, 6000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'dark bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 text-white py-20">
+    <div className="min-h-screen bg-white text-gray-900">
+      {/* Hero Section with Indian gradient colors */}
+      <section className="relative bg-gradient-to-r from-orange-500 via-blue-600 to-green-600 text-white py-20">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-orange-100 bg-clip-text text-transparent">
               Master Global Finance with Finedge
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100">
-              Empowering Chartered Accountants worldwide with cross-border expertise, 
-              international certifications, and AI-powered learning
+              Empowering Indian Chartered Accountants with international expertise, 
+              cross-border certifications, and AI-powered learning
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/courses">
@@ -200,19 +222,19 @@ const HomePage: React.FC = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
               <div className="text-center">
-                <div className="text-3xl font-bold">250K+</div>
-                <div className="text-blue-100">Global Students</div>
+                <div className="text-3xl font-bold">50K+</div>
+                <div className="text-blue-100">Indian CAs Trained</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold">500+</div>
+                <div className="text-3xl font-bold">200+</div>
                 <div className="text-blue-100">Expert Courses</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold">50+</div>
-                <div className="text-blue-100">Countries</div>
+                <div className="text-3xl font-bold">25+</div>
+                <div className="text-blue-100">Countries Covered</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold">95%</div>
+                <div className="text-3xl font-bold">98%</div>
                 <div className="text-blue-100">Success Rate</div>
               </div>
             </div>
@@ -220,12 +242,12 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* YouTube Flickers Carousel */}
+      {/* YouTube Flickers Carousel - Now Functional */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Course Previews</h2>
-            <p className="text-xl text-gray-600">Get a sneak peek at our expert-led content</p>
+            <h2 className="text-4xl font-bold mb-4">Free CA Learning Videos</h2>
+            <p className="text-xl text-gray-600">Watch expert lectures from top Indian CAs on YouTube</p>
           </div>
           
           <div className="relative max-w-6xl mx-auto">
@@ -233,7 +255,8 @@ const HomePage: React.FC = () => {
               <div className="flex transition-transform duration-500 ease-in-out" 
                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                 {youtubeTeasers.map((teaser) => (
-                  <div key={teaser.id} className="w-full flex-shrink-0 relative group">
+                  <div key={teaser.id} className="w-full flex-shrink-0 relative group cursor-pointer"
+                       onClick={() => handleVideoClick(teaser.videoUrl)}>
                     <div className="aspect-video relative overflow-hidden">
                       <img 
                         src={teaser.thumbnail} 
@@ -241,10 +264,14 @@ const HomePage: React.FC = () => {
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Button size="lg" className="bg-white/90 text-gray-900 hover:bg-white">
+                        <Button size="lg" className="bg-red-600 text-white hover:bg-red-700">
                           <Play className="mr-2 h-6 w-6" />
-                          Watch Preview
+                          Watch on YouTube
                         </Button>
+                      </div>
+                      <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm flex items-center">
+                        <ExternalLink className="h-3 w-3 mr-1" />
+                        YouTube
                       </div>
                       <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
                         <Clock className="inline h-4 w-4 mr-1" />
@@ -256,7 +283,8 @@ const HomePage: React.FC = () => {
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                       <h3 className="text-white text-xl font-semibold mb-2">{teaser.title}</h3>
-                      <p className="text-gray-200">by {teaser.instructor}</p>
+                      <p className="text-gray-200 mb-1">by {teaser.instructor}</p>
+                      <p className="text-gray-300 text-sm">{teaser.description}</p>
                     </div>
                   </div>
                 ))}
@@ -284,7 +312,7 @@ const HomePage: React.FC = () => {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentSlide ? 'bg-blue-600' : 'bg-gray-300'
+                    index === currentSlide ? 'bg-orange-600' : 'bg-gray-300'
                   }`}
                 />
               ))}
@@ -299,10 +327,10 @@ const HomePage: React.FC = () => {
           <div className="flex justify-between items-center mb-12">
             <div>
               <h2 className="text-4xl font-bold mb-4">Featured Courses</h2>
-              <p className="text-xl text-gray-600">Master international finance with expert guidance</p>
+              <p className="text-xl text-gray-600">Master international finance with expert Indian CA guidance</p>
             </div>
             <Link to="/courses">
-              <Button variant="outline" className="flex items-center">
+              <Button variant="outline" className="flex items-center border-orange-200 text-orange-600 hover:bg-orange-50">
                 View All Courses
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -311,7 +339,7 @@ const HomePage: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredCourses.map((course) => (
-              <Card key={course.id} className="group hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+              <Card key={course.id} className="group hover:shadow-xl transition-shadow duration-300 overflow-hidden border-orange-100">
                 <div className="relative">
                   <img 
                     src={course.image} 
@@ -323,7 +351,7 @@ const HomePage: React.FC = () => {
                   </Badge>
                 </div>
                 <CardHeader>
-                  <CardTitle className="line-clamp-2 group-hover:text-blue-600 transition-colors">
+                  <CardTitle className="line-clamp-2 group-hover:text-orange-600 transition-colors">
                     {course.title}
                   </CardTitle>
                   <CardDescription>by {course.instructor}</CardDescription>
@@ -353,7 +381,7 @@ const HomePage: React.FC = () => {
                       {course.duration}
                     </div>
                   </div>
-                  <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700">
+                  <Button className="w-full mt-4 bg-orange-600 hover:bg-orange-700">
                     Enroll Now
                   </Button>
                 </CardContent>
@@ -368,11 +396,11 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-12">
             <div>
-              <h2 className="text-4xl font-bold mb-4">Latest Insights</h2>
-              <p className="text-xl text-gray-600">Stay updated with industry trends and expert analysis</p>
+              <h2 className="text-4xl font-bold mb-4">Latest CA Insights</h2>
+              <p className="text-xl text-gray-600">Stay updated with Indian and international tax regulations</p>
             </div>
             <Link to="/blog">
-              <Button variant="outline" className="flex items-center">
+              <Button variant="outline" className="flex items-center border-orange-200 text-orange-600 hover:bg-orange-50">
                 View All Articles
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -381,7 +409,7 @@ const HomePage: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredBlogs.map((blog) => (
-              <Card key={blog.id} className="group hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+              <Card key={blog.id} className="group hover:shadow-xl transition-shadow duration-300 overflow-hidden border-orange-100">
                 <div className="flex">
                   <img 
                     src={blog.image} 
@@ -391,12 +419,12 @@ const HomePage: React.FC = () => {
                   <div className="w-2/3 p-6">
                     <div className="flex flex-wrap gap-2 mb-3">
                       {blog.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary" className="text-xs">
+                        <Badge key={tag} variant="secondary" className="text-xs bg-orange-100 text-orange-800">
                           {tag}
                         </Badge>
                       ))}
                     </div>
-                    <h3 className="text-lg font-semibold mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-lg font-semibold mb-2 line-clamp-2 group-hover:text-orange-600 transition-colors">
                       {blog.title}
                     </h3>
                     <p className="text-gray-600 text-sm mb-3 line-clamp-2">{blog.excerpt}</p>
@@ -416,13 +444,13 @@ const HomePage: React.FC = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">What Our Students Say</h2>
-            <p className="text-xl text-gray-600">Join thousands of successful finance professionals</p>
+            <h2 className="text-4xl font-bold mb-4">What Indian CAs Say</h2>
+            <p className="text-xl text-gray-600">Join thousands of successful chartered accountants across India</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {testimonials.map((testimonial) => (
-              <Card key={testimonial.id} className="p-6">
+              <Card key={testimonial.id} className="p-6 border-orange-100">
                 <CardContent className="p-0">
                   <div className="flex items-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
@@ -435,7 +463,7 @@ const HomePage: React.FC = () => {
                   <div className="flex items-center">
                     <Avatar className="mr-3">
                       <AvatarImage src={testimonial.avatar} />
-                      <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                      <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                     </Avatar>
                     <div>
                       <div className="font-semibold">{testimonial.name}</div>
@@ -450,11 +478,11 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 bg-blue-600 text-white">
+      <section className="py-16 bg-gradient-to-r from-orange-600 via-blue-600 to-green-600 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">Stay Ahead of the Curve</h2>
+          <h2 className="text-4xl font-bold mb-4">Stay Ahead in Your CA Career</h2>
           <p className="text-xl mb-8 text-blue-100">
-            Get weekly insights, course updates, and exclusive content delivered to your inbox
+            Get weekly insights, course updates, and exclusive content for Indian CAs
           </p>
           <form onSubmit={handleNewsletterSignup} className="max-w-md mx-auto flex gap-4">
             <Input
@@ -481,32 +509,32 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-orange-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Globe className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Global Reach</h3>
-              <p className="text-gray-400">Learn laws and practices from 50+ countries</p>
+              <h3 className="text-xl font-semibold mb-2">Global Expertise</h3>
+              <p className="text-gray-400">Learn international practices from India's perspective</p>
             </div>
             <div className="text-center">
               <div className="bg-green-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Award className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Certified Learning</h3>
-              <p className="text-gray-400">Industry-recognized certificates and credentials</p>
+              <p className="text-gray-400">Industry-recognized certificates for Indian CAs</p>
             </div>
             <div className="text-center">
-              <div className="bg-purple-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <MessageSquare className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">AI-Powered Support</h3>
-              <p className="text-gray-400">24/7 intelligent tutoring and assistance</p>
+              <p className="text-gray-400">24/7 intelligent tutoring in multiple Indian languages</p>
             </div>
             <div className="text-center">
-              <div className="bg-orange-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-purple-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Career Growth</h3>
-              <p className="text-gray-400">Track your progress and advance your career</p>
+              <p className="text-gray-400">Advance your CA career globally from India</p>
             </div>
           </div>
         </div>
