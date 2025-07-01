@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -18,8 +17,10 @@ import {
   FileText,
   MessageSquare,
   Settings,
-  Eye
+  Eye,
+  Globe
 } from 'lucide-react';
+import ContentManagement from '@/components/admin/ContentManagement';
 
 const AdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -152,11 +153,12 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid grid-cols-4 lg:grid-cols-6 w-full lg:w-auto">
+          <TabsList className="grid grid-cols-4 lg:grid-cols-7 w-full lg:w-auto">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="approvals">Approvals</TabsTrigger>
             <TabsTrigger value="users">Users</TabsTrigger>
             <TabsTrigger value="content">Content</TabsTrigger>
+            <TabsTrigger value="cms">CMS</TabsTrigger>
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
@@ -316,6 +318,10 @@ const AdminDashboard: React.FC = () => {
                 </div>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="cms" className="space-y-6">
+            <ContentManagement />
           </TabsContent>
 
           <TabsContent value="analytics" className="space-y-6">

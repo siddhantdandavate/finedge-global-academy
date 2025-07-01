@@ -1,0 +1,77 @@
+
+{
+  "nav": {
+    "home": "首页",
+    "courses": "课程",
+    "instructors": "讲师",
+    "about": "关于我们",
+    "contact": "联系我们",
+    "login": "登录",
+    "register": "注册",
+    "dashboard": "仪表板"
+  },
+  "hero": {
+    "title": "与Finedge一起掌握全球金融",
+    "subtitle": "通过国际专业知识、跨境认证和AI驱动的学习来赋能印度特许会计师",
+    "exploreCourses": "探索课程",
+    "startFreeTrial": "开始免费试用"
+  },
+  "stats": {
+    "indianCAs": "培训的印度CA",
+    "expertCourses": "专家课程",
+    "countriesCovered": "覆盖国家",
+    "successRate": "成功率"
+  },
+  "sections": {
+    "freeVideos": "免费CA学习视频",
+    "freeVideosDesc": "观看YouTube上顶级印度CA的专家讲座",
+    "featuredCourses": "精选课程",
+    "featuredCoursesDesc": "在专家印度CA指导下掌握国际金融",
+    "latestInsights": "最新CA见解",
+    "latestInsightsDesc": "跟上印度和国际税收法规的最新动态",
+    "testimonials": "印度CA怎么说",
+    "testimonialsDesc": "加入遍布印度的数千名成功特许会计师"
+  },
+  "buttons": {
+    "enrollNow": "立即注册",
+    "viewAllCourses": "查看所有课程",
+    "viewAllArticles": "查看所有文章",
+    "watchOnYoutube": "在YouTube上观看",
+    "subscribe": "订阅"
+  },
+  "common": {
+    "duration": "时长",
+    "students": "学生",
+    "views": "观看次数",
+    "readTime": "分钟阅读时间",
+    "by": "由",
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功"
+  },
+  "footer": {
+    "tagline": "🇮🇳 印度制造 | 在全球范围内赋能特许会计师",
+    "globalExpertise": "全球专业知识",
+    "globalExpertiseDesc": "从印度的角度学习国际实践",
+    "certifiedLearning": "认证学习",
+    "certifiedLearningDesc": "为印度CA提供行业认可的证书",
+    "aiSupport": "AI驱动支持",
+    "aiSupportDesc": "多种印度语言24/7智能辅导",
+    "careerGrowth": "职业发展",
+    "careerGrowthDesc": "从印度推进您的CA职业全球发展"
+  },
+  "newsletter": {
+    "title": "在您的CA职业生涯中保持领先",
+    "subtitle": "获取印度CA的每周见解、课程更新和独家内容",
+    "emailPlaceholder": "输入您的邮箱",
+    "noSpam": "无垃圾邮件，随时取消订阅"
+  },
+  "dashboard": {
+    "welcome": "欢迎回来",
+    "overview": "概览",
+    "courses": "课程",
+    "progress": "进度",
+    "settings": "设置",
+    "logout": "退出登录"
+  }
+}

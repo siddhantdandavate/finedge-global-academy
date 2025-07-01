@@ -1,0 +1,77 @@
+
+{
+  "nav": {
+    "home": "Accueil",
+    "courses": "Cours",
+    "instructors": "Instructeurs",
+    "about": "À propos",
+    "contact": "Contact",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "dashboard": "Tableau de bord"
+  },
+  "hero": {
+    "title": "Maîtrisez la finance mondiale avec Finedge",
+    "subtitle": "Autonomiser les experts-comptables indiens avec une expertise internationale, des certifications transfrontalières et un apprentissage alimenté par l'IA",
+    "exploreCourses": "Explorer les cours",
+    "startFreeTrial": "Commencer l'essai gratuit"
+  },
+  "stats": {
+    "indianCAs": "CA indiens formés",
+    "expertCourses": "Cours d'experts",
+    "countriesCovered": "Pays couverts",
+    "successRate": "Taux de réussite"
+  },
+  "sections": {
+    "freeVideos": "Vidéos d'apprentissage CA gratuites",
+    "freeVideosDesc": "Regardez les conférences d'experts des meilleurs CA indiens sur YouTube",
+    "featuredCourses": "Cours en vedette",
+    "featuredCoursesDesc": "Maîtrisez la finance internationale avec les conseils d'experts CA indiens",
+    "latestInsights": "Dernières perspectives CA",
+    "latestInsightsDesc": "Restez à jour avec les réglementations fiscales indiennes et internationales",
+    "testimonials": "Ce que disent les CA indiens",
+    "testimonialsDesc": "Rejoignez des milliers d'experts-comptables prospères à travers l'Inde"
+  },
+  "buttons": {
+    "enrollNow": "S'inscrire maintenant",
+    "viewAllCourses": "Voir tous les cours",
+    "viewAllArticles": "Voir tous les articles",
+    "watchOnYoutube": "Regarder sur YouTube",
+    "subscribe": "S'abonner"
+  },
+  "common": {
+    "duration": "Durée",
+    "students": "étudiants",
+    "views": "vues",
+    "readTime": "min de lecture",
+    "by": "par",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès"
+  },
+  "footer": {
+    "tagline": "🇮🇳 Fabriqué en Inde | Autonomiser les experts-comptables dans le monde entier",
+    "globalExpertise": "Expertise mondiale",
+    "globalExpertiseDesc": "Apprenez les pratiques internationales du point de vue de l'Inde",
+    "certifiedLearning": "Apprentissage certifié",
+    "certifiedLearningDesc": "Certificats reconnus par l'industrie pour les CA indiens",
+    "aiSupport": "Support alimenté par l'IA",
+    "aiSupportDesc": "Tutorat intelligent 24/7 en plusieurs langues indiennes",
+    "careerGrowth": "Croissance de carrière",
+    "careerGrowthDesc": "Faites progresser votre carrière de CA à l'échelle mondiale depuis l'Inde"
+  },
+  "newsletter": {
+    "title": "Gardez une longueur d'avance dans votre carrière de CA",
+    "subtitle": "Obtenez des perspectives hebdomadaires, des mises à jour de cours et du contenu exclusif pour les CA indiens",
+    "emailPlaceholder": "Entrez votre email",
+    "noSpam": "Pas de spam, désabonnez-vous à tout moment"
+  },
+  "dashboard": {
+    "welcome": "Bienvenue",
+    "overview": "Aperçu",
+    "courses": "Cours",
+    "progress": "Progrès",
+    "settings": "Paramètres",
+    "logout": "Déconnexion"
+  }
+}

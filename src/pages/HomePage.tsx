@@ -1,6 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 
 const HomePage: React.FC = () => {
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [email, setEmail] = useState('');
 
@@ -199,22 +200,21 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-orange-100 bg-clip-text text-transparent">
-              Master Global Finance with Finedge
+              {t('hero.title')}
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100">
-              Empowering Indian Chartered Accountants with international expertise, 
-              cross-border certifications, and AI-powered learning
+              {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/courses">
                 <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg">
                   <BookOpen className="mr-2 h-5 w-5" />
-                  Explore Courses
+                  {t('hero.exploreCourses')}
                 </Button>
               </Link>
               <Link to="/register">
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg">
-                  Start Free Trial
+                  {t('hero.startFreeTrial')}
                 </Button>
               </Link>
             </div>
@@ -223,19 +223,19 @@ const HomePage: React.FC = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
               <div className="text-center">
                 <div className="text-3xl font-bold">50K+</div>
-                <div className="text-blue-100">Indian CAs Trained</div>
+                <div className="text-blue-100">{t('stats.indianCAs')}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold">200+</div>
-                <div className="text-blue-100">Expert Courses</div>
+                <div className="text-blue-100">{t('stats.expertCourses')}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold">25+</div>
-                <div className="text-blue-100">Countries Covered</div>
+                <div className="text-blue-100">{t('stats.countriesCovered')}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold">98%</div>
-                <div className="text-blue-100">Success Rate</div>
+                <div className="text-blue-100">{t('stats.successRate')}</div>
               </div>
             </div>
           </div>
@@ -246,8 +246,8 @@ const HomePage: React.FC = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Free CA Learning Videos</h2>
-            <p className="text-xl text-gray-600">Watch expert lectures from top Indian CAs on YouTube</p>
+            <h2 className="text-4xl font-bold mb-4">{t('sections.freeVideos')}</h2>
+            <p className="text-xl text-gray-600">{t('sections.freeVideosDesc')}</p>
           </div>
           
           <div className="relative max-w-6xl mx-auto">
@@ -480,26 +480,26 @@ const HomePage: React.FC = () => {
       {/* Newsletter Section */}
       <section className="py-16 bg-gradient-to-r from-orange-600 via-blue-600 to-green-600 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">Stay Ahead in Your CA Career</h2>
+          <h2 className="text-4xl font-bold mb-4">{t('newsletter.title')}</h2>
           <p className="text-xl mb-8 text-blue-100">
-            Get weekly insights, course updates, and exclusive content for Indian CAs
+            {t('newsletter.subtitle')}
           </p>
           <form onSubmit={handleNewsletterSignup} className="max-w-md mx-auto flex gap-4">
             <Input
               type="email"
-              placeholder="Enter your email"
+              placeholder={t('newsletter.emailPlaceholder')}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="flex-1 bg-white text-gray-900"
               required
             />
             <Button type="submit" className="bg-green-600 hover:bg-green-700 px-8">
-              Subscribe
+              {t('buttons.subscribe')}
             </Button>
           </form>
           <div className="flex items-center justify-center mt-4 text-blue-200">
             <CheckCircle className="h-4 w-4 mr-2" />
-            <span className="text-sm">No spam, unsubscribe anytime</span>
+            <span className="text-sm">{t('newsletter.noSpam')}</span>
           </div>
         </div>
       </section>
@@ -512,29 +512,29 @@ const HomePage: React.FC = () => {
               <div className="bg-orange-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Globe className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Global Expertise</h3>
-              <p className="text-gray-400">Learn international practices from India's perspective</p>
+              <h3 className="text-xl font-semibold mb-2">{t('footer.globalExpertise')}</h3>
+              <p className="text-gray-400">{t('footer.globalExpertiseDesc')}</p>
             </div>
             <div className="text-center">
               <div className="bg-green-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Award className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Certified Learning</h3>
-              <p className="text-gray-400">Industry-recognized certificates for Indian CAs</p>
+              <h3 className="text-xl font-semibold mb-2">{t('footer.certifiedLearning')}</h3>
+              <p className="text-gray-400">{t('footer.certifiedLearningDesc')}</p>
             </div>
             <div className="text-center">
               <div className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <MessageSquare className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">AI-Powered Support</h3>
-              <p className="text-gray-400">24/7 intelligent tutoring in multiple Indian languages</p>
+              <h3 className="text-xl font-semibold mb-2">{t('footer.aiSupport')}</h3>
+              <p className="text-gray-400">{t('footer.aiSupportDesc')}</p>
             </div>
             <div className="text-center">
               <div className="bg-purple-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Career Growth</h3>
-              <p className="text-gray-400">Advance your CA career globally from India</p>
+              <h3 className="text-xl font-semibold mb-2">{t('footer.careerGrowth')}</h3>
+              <p className="text-gray-400">{t('footer.careerGrowthDesc')}</p>
             </div>
           </div>
         </div>

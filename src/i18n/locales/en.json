@@ -1,0 +1,77 @@
+
+{
+  "nav": {
+    "home": "Home",
+    "courses": "Courses",
+    "instructors": "Instructors",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "register": "Register",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "title": "Master Global Finance with Finedge",
+    "subtitle": "Empowering Indian Chartered Accountants with international expertise, cross-border certifications, and AI-powered learning",
+    "exploreCourses": "Explore Courses",
+    "startFreeTrial": "Start Free Trial"
+  },
+  "stats": {
+    "indianCAs": "Indian CAs Trained",
+    "expertCourses": "Expert Courses",
+    "countriesCovered": "Countries Covered",
+    "successRate": "Success Rate"
+  },
+  "sections": {
+    "freeVideos": "Free CA Learning Videos",
+    "freeVideosDesc": "Watch expert lectures from top Indian CAs on YouTube",
+    "featuredCourses": "Featured Courses",
+    "featuredCoursesDesc": "Master international finance with expert Indian CA guidance",
+    "latestInsights": "Latest CA Insights",
+    "latestInsightsDesc": "Stay updated with Indian and international tax regulations",
+    "testimonials": "What Indian CAs Say",
+    "testimonialsDesc": "Join thousands of successful chartered accountants across India"
+  },
+  "buttons": {
+    "enrollNow": "Enroll Now",
+    "viewAllCourses": "View All Courses",
+    "viewAllArticles": "View All Articles",
+    "watchOnYoutube": "Watch on YouTube",
+    "subscribe": "Subscribe"
+  },
+  "common": {
+    "duration": "Duration",
+    "students": "students",
+    "views": "views",
+    "readTime": "min read",
+    "by": "by",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "footer": {
+    "tagline": "Made in 🇮🇳 India | Empowering Chartered Accountants Globally",
+    "globalExpertise": "Global Expertise",
+    "globalExpertiseDesc": "Learn international practices from India's perspective",
+    "certifiedLearning": "Certified Learning",
+    "certifiedLearningDesc": "Industry-recognized certificates for Indian CAs",
+    "aiSupport": "AI-Powered Support",
+    "aiSupportDesc": "24/7 intelligent tutoring in multiple Indian languages",
+    "careerGrowth": "Career Growth",
+    "careerGrowthDesc": "Advance your CA career globally from India"
+  },
+  "newsletter": {
+    "title": "Stay Ahead in Your CA Career",
+    "subtitle": "Get weekly insights, course updates, and exclusive content for Indian CAs",
+    "emailPlaceholder": "Enter your email",
+    "noSpam": "No spam, unsubscribe anytime"
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "overview": "Overview",
+    "courses": "Courses",
+    "progress": "Progress",
+    "settings": "Settings",
+    "logout": "Logout"
+  }
+}

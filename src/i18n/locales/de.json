@@ -1,0 +1,77 @@
+
+{
+  "nav": {
+    "home": "Startseite",
+    "courses": "Kurse",
+    "instructors": "Dozenten",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "title": "Meistern Sie globale Finanzen mit Finedge",
+    "subtitle": "Stärkung indischer Wirtschaftsprüfer mit internationaler Expertise, grenzüberschreitenden Zertifizierungen und KI-gestütztem Lernen",
+    "exploreCourses": "Kurse erkunden",
+    "startFreeTrial": "Kostenlose Testversion starten"
+  },
+  "stats": {
+    "indianCAs": "Ausgebildete indische CAs",
+    "expertCourses": "Expertenkurse",
+    "countriesCovered": "Abgedeckte Länder",
+    "successRate": "Erfolgsquote"
+  },
+  "sections": {
+    "freeVideos": "Kostenlose CA-Lernvideos",
+    "freeVideosDesc": "Schauen Sie sich Expertenvorlesungen der besten indischen CAs auf YouTube an",
+    "featuredCourses": "Empfohlene Kurse",
+    "featuredCoursesDesc": "Meistern Sie internationale Finanzen mit Expertenberatung indischer CAs",
+    "latestInsights": "Neueste CA-Einblicke",
+    "latestInsightsDesc": "Bleiben Sie auf dem Laufenden mit indischen und internationalen Steuervorschriften",
+    "testimonials": "Was indische CAs sagen",
+    "testimonialsDesc": "Schließen Sie sich Tausenden erfolgreicher Wirtschaftsprüfer in ganz Indien an"
+  },
+  "buttons": {
+    "enrollNow": "Jetzt einschreiben",
+    "viewAllCourses": "Alle Kurse anzeigen",
+    "viewAllArticles": "Alle Artikel anzeigen",
+    "watchOnYoutube": "Auf YouTube ansehen",
+    "subscribe": "Abonnieren"
+  },
+  "common": {
+    "duration": "Dauer",
+    "students": "Studenten",
+    "views": "Aufrufe",
+    "readTime": "Min Lesezeit",
+    "by": "von",
+    "loading": "Wird geladen...",
+    "error": "Fehler",
+    "success": "Erfolg"
+  },
+  "footer": {
+    "tagline": "🇮🇳 Hergestellt in Indien | Stärkung von Wirtschaftsprüfern weltweit",
+    "globalExpertise": "Globale Expertise",
+    "globalExpertiseDesc": "Lernen Sie internationale Praktiken aus indischer Sicht",
+    "certifiedLearning": "Zertifiziertes Lernen",
+    "certifiedLearningDesc": "Branchenanerkannte Zertifikate für indische CAs",
+    "aiSupport": "KI-gestützte Unterstützung",
+    "aiSupportDesc": "24/7 intelligente Nachhilfe in mehreren indischen Sprachen",
+    "careerGrowth": "Karrierewachstum",
+    "careerGrowthDesc": "Fördern Sie Ihre CA-Karriere global von Indien aus"
+  },
+  "newsletter": {
+    "title": "Bleiben Sie in Ihrer CA-Karriere voraus",
+    "subtitle": "Erhalten Sie wöchentliche Einblicke, Kursupdates und exklusive Inhalte für indische CAs",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+    "noSpam": "Kein Spam, jederzeit abbestellen"
+  },
+  "dashboard": {
+    "welcome": "Willkommen zurück",
+    "overview": "Übersicht",
+    "courses": "Kurse",
+    "progress": "Fortschritt",
+    "settings": "Einstellungen",
+    "logout": "Abmelden"
+  }
+}

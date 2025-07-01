@@ -1,0 +1,77 @@
+
+{
+  "nav": {
+    "home": "Inicio",
+    "courses": "Cursos",
+    "instructors": "Instructores",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "dashboard": "Panel"
+  },
+  "hero": {
+    "title": "Domina las finanzas globales con Finedge",
+    "subtitle": "Empoderando a los contadores públicos indios con experiencia internacional, certificaciones transfronterizas y aprendizaje impulsado por IA",
+    "exploreCourses": "Explorar cursos",
+    "startFreeTrial": "Comenzar prueba gratuita"
+  },
+  "stats": {
+    "indianCAs": "CA indios entrenados",
+    "expertCourses": "Cursos de expertos",
+    "countriesCovered": "Países cubiertos",
+    "successRate": "Tasa de éxito"
+  },
+  "sections": {
+    "freeVideos": "Videos gratuitos de aprendizaje CA",
+    "freeVideosDesc": "Mira conferencias expertas de los mejores CA indios en YouTube",
+    "featuredCourses": "Cursos destacados",
+    "featuredCoursesDesc": "Domina las finanzas internacionales con la guía experta de CA indios",
+    "latestInsights": "Últimos conocimientos CA",
+    "latestInsightsDesc": "Mantente actualizado con las regulaciones fiscales indias e internacionales",
+    "testimonials": "Lo que dicen los CA indios",
+    "testimonialsDesc": "Únete a miles de contadores públicos exitosos en toda la India"
+  },
+  "buttons": {
+    "enrollNow": "Inscribirse ahora",
+    "viewAllCourses": "Ver todos los cursos",
+    "viewAllArticles": "Ver todos los artículos",
+    "watchOnYoutube": "Ver en YouTube",
+    "subscribe": "Suscribirse"
+  },
+  "common": {
+    "duration": "Duración",
+    "students": "estudiantes",
+    "views": "vistas",
+    "readTime": "min de lectura",
+    "by": "por",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito"
+  },
+  "footer": {
+    "tagline": "🇮🇳 Hecho en India | Empoderando contadores públicos globalmente",
+    "globalExpertise": "Experiencia global",
+    "globalExpertiseDesc": "Aprende prácticas internacionales desde la perspectiva de India",
+    "certifiedLearning": "Aprendizaje certificado",
+    "certifiedLearningDesc": "Certificados reconocidos por la industria para CA indios",
+    "aiSupport": "Soporte impulsado por IA",
+    "aiSupportDesc": "Tutoría inteligente 24/7 en múltiples idiomas indios",
+    "careerGrowth": "Crecimiento profesional",
+    "careerGrowthDesc": "Avanza tu carrera de CA globalmente desde India"
+  },
+  "newsletter": {
+    "title": "Mantente adelante en tu carrera de CA",
+    "subtitle": "Obtén conocimientos semanales, actualizaciones de cursos y contenido exclusivo para CA indios",
+    "emailPlaceholder": "Ingresa tu email",
+    "noSpam": "Sin spam, cancela suscripción en cualquier momento"
+  },
+  "dashboard": {
+    "welcome": "Bienvenido de vuelta",
+    "overview": "Resumen",
+    "courses": "Cursos",
+    "progress": "Progreso",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión"
+  }
+}
