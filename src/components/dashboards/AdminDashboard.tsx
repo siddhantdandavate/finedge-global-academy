@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -25,12 +26,14 @@ import {
   Calendar,
   Award,
   Globe,
-  Star
+  Star,
+  Edit3
 } from 'lucide-react';
 import ApprovalWorkflow from '@/components/admin/ApprovalWorkflow';
 import UserSettings from '@/pages/UserSettings';
 import NotificationCenter from '@/pages/NotificationCenter';
 import FeedbackList from '@/components/feedback/FeedbackList';
+import DynamicContentManager from '@/components/admin/DynamicContentManager';
 import { Feedback } from '@/types/feedback';
 
 const AdminDashboard: React.FC = () => {
@@ -84,6 +87,7 @@ const AdminDashboard: React.FC = () => {
     { icon: Users, label: 'User Management', path: '/admin/users' },
     { icon: BookOpen, label: 'Course Management', path: '/admin/courses' },
     { icon: FileText, label: 'Content Management', path: '/admin/content' },
+    { icon: Edit3, label: 'Dynamic Content', path: '/admin/dynamic-content' },
     { icon: Video, label: 'Media Library', path: '/admin/media' },
     { icon: Star, label: 'Feedback', path: '/admin/feedback' },
     { icon: TrendingUp, label: 'Analytics', path: '/admin/analytics' },
@@ -173,6 +177,7 @@ const AdminDashboard: React.FC = () => {
           <Route path="/users" element={<UserManagement />} />
           <Route path="/courses" element={<CourseManagement />} />
           <Route path="/content" element={<ContentManagement />} />
+          <Route path="/dynamic-content" element={<DynamicContentManager />} />
           <Route path="/media" element={<MediaLibrary />} />
           <Route path="/feedback" element={<FeedbackManagement feedbacks={feedbacks} />} />
           <Route path="/analytics" element={<Analytics />} />

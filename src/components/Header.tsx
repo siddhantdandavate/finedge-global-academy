@@ -1,184 +1,218 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuSeparator, 
-  DropdownMenuTrigger 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Bell, Settings, User, LogOut, Menu, X } from 'lucide-react';
+import { 
+  Bell, 
+  User, 
+  Settings, 
+  LogOut, 
+  LayoutDashboard,
+  Menu,
+  X,
+  MessageSquare
+} from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
-import { useState } from 'react';
-import LanguageSelector from './LanguageSelector';
+import { useContent } from '@/contexts/ContentContext';
+import LanguageSelector from '@/components/LanguageSelector';
+import SimpleChatbot from '@/components/ai/SimpleChatbot';
 
 export const Header: React.FC = () => {
-  const { t } = useTranslation();
   const { user, logout } = useAuth();
+  const { content } = useContent();
   const navigate = useNavigate();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [chatbotOpen, setChatbotOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
     navigate('/');
   };
 
-  const getDashboardRoute = () => {
-    if (!user) return '/';
-    switch (user.role) {
-      case 'admin': return '/admin/dashboard';
-      case 'instructor': return '/instructor/dashboard';
-      case 'student': return '/student/dashboard';
-      case 'content-writer': return '/content-writer/dashboard';
-      case 'blogger': return '/blogger/dashboard';
+  const getDashboardPath = (role: string) => {
+    switch (role) {
+      case 'admin': return '/admin';
+      case 'instructor': return '/instructor';
+      case 'student': return '/student';
+      case 'content-writer': return '/content-writer';
+      case 'blogger': return '/blogger';
       default: return '/';
     }
   };
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">F</span>
+    <>
+      <header className="bg-white shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div className="flex items-center">
+              <Link to="/" className="flex items-center space-x-2">
+                <img 
+                  src={content.branding.logo.primary} 
+                  alt={content.branding.logo.alt}
+                  className="h-8 w-auto"
+                  onError={(e) => {
+                    // Fallback to text logo if image fails to load
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                <span className="hidden text-xl font-bold text-gray-900">
+                  {content.branding.siteName}
+                </span>
+              </Link>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent">
-              Finedge
-            </span>
-          </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-orange-600 transition-colors">
-              {t('nav.home')}
-            </Link>
-            <Link to="/courses" className="text-gray-700 hover:text-orange-600 transition-colors">
-              {t('nav.courses')}
-            </Link>
-            <Link to="/instructors" className="text-gray-700 hover:text-orange-600 transition-colors">
-              {t('nav.instructors')}
-            </Link>
-            <Link to="/about" className="text-gray-700 hover:text-orange-600 transition-colors">
-              {t('nav.about')}
-            </Link>
-            <Link to="/contact" className="text-gray-700 hover:text-orange-600 transition-colors">
-              {t('nav.contact')}
-            </Link>
-          </nav>
-
-          {/* Right Side */}
-          <div className="flex items-center space-x-4">
-            <LanguageSelector />
-            
-            {user ? (
-              <div className="flex items-center space-x-4">
-                <Link to="/notifications">
-                  <Button variant="outline" size="sm" className="h-8 w-8 p-0">
-                    <Bell className="h-4 w-4" />
-                  </Button>
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
+              {content.navigation.main.map((item) => (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors"
+                >
+                  {item.label}
                 </Link>
-                
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Avatar className="h-8 w-8 cursor-pointer">
-                      <AvatarImage src={user.avatar} />
-                      <AvatarFallback>
-                        {user.name?.charAt(0) || user.email.charAt(0)}
-                      </AvatarFallback>
-                    </Avatar>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-56">
-                    <DropdownMenuItem asChild>
-                      <Link to={getDashboardRoute()} className="flex items-center">
-                        <User className="mr-2 h-4 w-4" />
-                        {t('nav.dashboard')}
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link to="/settings" className="flex items-center">
-                        <Settings className="mr-2 h-4 w-4" />
-                        {t('dashboard.settings')}
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={handleLogout} className="text-red-600">
-                      <LogOut className="mr-2 h-4 w-4" />
-                      {t('dashboard.logout')}
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-            ) : (
-              <div className="hidden md:flex items-center space-x-4">
-                <Link to="/login">
-                  <Button variant="outline" size="sm">
-                    {t('nav.login')}
-                  </Button>
-                </Link>
-                <Link to="/register">
-                  <Button size="sm" className="bg-orange-600 hover:bg-orange-700">
-                    {t('nav.register')}
-                  </Button>
-                </Link>
-              </div>
-            )}
+              ))}
+            </nav>
 
-            {/* Mobile Menu Button */}
-            <Button
-              variant="outline"
-              size="sm"
-              className="md:hidden h-8 w-8 p-0"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-            </Button>
-          </div>
-        </div>
+            {/* Right Section */}
+            <div className="flex items-center space-x-4">
+              {/* Language Selector */}
+              <LanguageSelector />
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            <nav className="flex flex-col space-y-4">
-              <Link to="/" className="text-gray-700 hover:text-orange-600 transition-colors">
-                {t('nav.home')}
-              </Link>
-              <Link to="/courses" className="text-gray-700 hover:text-orange-600 transition-colors">
-                {t('nav.courses')}
-              </Link>
-              <Link to="/instructors" className="text-gray-700 hover:text-orange-600 transition-colors">
-                {t('nav.instructors')}
-              </Link>
-              <Link to="/about" className="text-gray-700 hover:text-orange-600 transition-colors">
-                {t('nav.about')}
-              </Link>
-              <Link to="/contact" className="text-gray-700 hover:text-orange-600 transition-colors">
-                {t('nav.contact')}
-              </Link>
-              
-              {!user && (
-                <div className="flex flex-col space-y-2 pt-4 border-t border-gray-200">
-                  <Link to="/login">
-                    <Button variant="outline" size="sm" className="w-full">
-                      {t('nav.login')}
+              {/* Chatbot Toggle */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setChatbotOpen(!chatbotOpen)}
+                className="hidden md:flex"
+              >
+                <MessageSquare className="h-4 w-4" />
+              </Button>
+
+              {user ? (
+                <>
+                  {/* Notifications */}
+                  <Link to="/notifications">
+                    <Button variant="ghost" size="sm" className="relative">
+                      <Bell className="h-4 w-4" />
+                      <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                        3
+                      </span>
                     </Button>
                   </Link>
+
+                  {/* User Menu */}
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                        <Avatar className="h-8 w-8">
+                          <AvatarImage src={user.avatar} alt={user.name} />
+                          <AvatarFallback>
+                            {user.name?.charAt(0) || user.email?.charAt(0)}
+                          </AvatarFallback>
+                        </Avatar>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56" align="end" forceMount>
+                      <DropdownMenuLabel className="font-normal">
+                        <div className="flex flex-col space-y-1">
+                          <p className="text-sm font-medium leading-none">{user.name}</p>
+                          <p className="text-xs leading-none text-muted-foreground">
+                            {user.email}
+                          </p>
+                        </div>
+                      </DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem asChild>
+                        <Link to={getDashboardPath(user.role)} className="flex items-center">
+                          <LayoutDashboard className="mr-2 h-4 w-4" />
+                          <span>Dashboard</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link to="/settings" className="flex items-center">
+                          <Settings className="mr-2 h-4 w-4" />
+                          <span>Settings</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem onClick={handleLogout}>
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Log out</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </>
+              ) : (
+                <div className="flex items-center space-x-2">
+                  <Link to="/login">
+                    <Button variant="ghost" size="sm">Login</Button>
+                  </Link>
                   <Link to="/register">
-                    <Button size="sm" className="w-full bg-orange-600 hover:bg-orange-700">
-                      {t('nav.register')}
-                    </Button>
+                    <Button size="sm">Register</Button>
                   </Link>
                 </div>
               )}
-            </nav>
+
+              {/* Mobile Menu Button */}
+              <Button
+                variant="ghost"
+                size="sm"
+                className="md:hidden"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              </Button>
+            </div>
           </div>
-        )}
-      </div>
-    </header>
+
+          {/* Mobile Navigation */}
+          {mobileMenuOpen && (
+            <div className="md:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t">
+                {content.navigation.main.map((item) => (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className="text-gray-600 hover:text-gray-900 block px-3 py-2 text-base font-medium"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                
+                {/* Mobile Chatbot Button */}
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start px-3 py-2"
+                  onClick={() => {
+                    setChatbotOpen(!chatbotOpen);
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  <MessageSquare className="h-4 w-4 mr-2" />
+                  AI Assistant
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      </header>
+
+      {/* Chatbot Component */}
+      <SimpleChatbot isOpen={chatbotOpen} onToggle={() => setChatbotOpen(!chatbotOpen)} />
+    </>
   );
 };
