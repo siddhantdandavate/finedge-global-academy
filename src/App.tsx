@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
+import Layout from '@/components/Layout';
 
 // Pages
 import HomePage from '@/pages/HomePage';
@@ -32,78 +33,80 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <main className="flex-1">
-            <Routes>
-              {/* Public Routes */}
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/courses" element={<CoursesPage />} />
-              <Route path="/course/:id" element={<CoursePlayer />} />
-              <Route path="/instructors" element={<InstructorsPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/blog/:id" element={<BlogDetail />} />
-              
-              {/* Protected Routes */}
-              <Route path="/payment" element={
-                <ProtectedRoute>
-                  <PaymentPage />
-                </ProtectedRoute>
-              } />
-              
-              <Route path="/notifications" element={
-                <ProtectedRoute>
-                  <NotificationCenter />
-                </ProtectedRoute>
-              } />
-              
-              <Route path="/settings" element={
-                <ProtectedRoute>
-                  <UserSettings />
-                </ProtectedRoute>
-              } />
+        <Layout>
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-1">
+              <Routes>
+                {/* Public Routes */}
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/courses" element={<CoursesPage />} />
+                <Route path="/course/:id" element={<CoursePlayer />} />
+                <Route path="/instructors" element={<InstructorsPage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/blog/:id" element={<BlogDetail />} />
+                
+                {/* Protected Routes */}
+                <Route path="/payment" element={
+                  <ProtectedRoute>
+                    <PaymentPage />
+                  </ProtectedRoute>
+                } />
+                
+                <Route path="/notifications" element={
+                  <ProtectedRoute>
+                    <NotificationCenter />
+                  </ProtectedRoute>
+                } />
+                
+                <Route path="/settings" element={
+                  <ProtectedRoute>
+                    <UserSettings />
+                  </ProtectedRoute>
+                } />
 
-              {/* Role-based Dashboard Routes */}
-              <Route path="/student/*" element={
-                <ProtectedRoute allowedRoles={['student']}>
-                  <StudentDashboard />
-                </ProtectedRoute>
-              } />
-              
-              <Route path="/instructor/*" element={
-                <ProtectedRoute allowedRoles={['instructor']}>
-                  <InstructorDashboard />
-                </ProtectedRoute>
-              } />
-              
-              <Route path="/admin/*" element={
-                <ProtectedRoute allowedRoles={['admin']}>
-                  <AdminDashboard />
-                </ProtectedRoute>
-              } />
-              
-              <Route path="/content-writer/*" element={
-                <ProtectedRoute allowedRoles={['content-writer']}>
-                  <ContentWriterDashboard />
-                </ProtectedRoute>
-              } />
-              
-              <Route path="/blogger/*" element={
-                <ProtectedRoute allowedRoles={['blogger']}>
-                  <BloggerDashboard />
-                </ProtectedRoute>
-              } />
+                {/* Role-based Dashboard Routes - Fixed paths */}
+                <Route path="/student/*" element={
+                  <ProtectedRoute allowedRoles={['student']}>
+                    <StudentDashboard />
+                  </ProtectedRoute>
+                } />
+                
+                <Route path="/instructor/*" element={
+                  <ProtectedRoute allowedRoles={['instructor']}>
+                    <InstructorDashboard />
+                  </ProtectedRoute>
+                } />
+                
+                <Route path="/admin/*" element={
+                  <ProtectedRoute allowedRoles={['admin']}>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                } />
+                
+                <Route path="/content-writer/*" element={
+                  <ProtectedRoute allowedRoles={['content-writer']}>
+                    <ContentWriterDashboard />
+                  </ProtectedRoute>
+                } />
+                
+                <Route path="/blogger/*" element={
+                  <ProtectedRoute allowedRoles={['blogger']}>
+                    <BloggerDashboard />
+                  </ProtectedRoute>
+                } />
 
-              {/* 404 Route */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-          <Toaster />
-        </div>
+                {/* 404 Route */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
+            <Toaster />
+          </div>
+        </Layout>
       </Router>
     </AuthProvider>
   );

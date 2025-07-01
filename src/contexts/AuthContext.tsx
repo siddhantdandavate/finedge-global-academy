@@ -26,40 +26,40 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const mockUsers: (User & { password: string })[] = [
   {
     id: '1',
-    name: 'Admin User',
+    name: 'Anuj Mehra',
     email: 'admin@finedge.com',
     password: 'admin123',
     role: 'admin',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
   },
   {
     id: '2',
-    name: 'John Instructor',
+    name: 'Shalini Rao',
     email: 'instructor@finedge.com',
     password: 'instructor123',
     role: 'instructor',
     isApproved: true,
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
-  },
-  {
-    id: '3',
-    name: 'Jane Student',
-    email: 'student@finedge.com',
-    password: 'student123',
-    role: 'student',
     avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
   },
   {
-    id: '4',
-    name: 'Content Writer',
-    email: 'writer@finedge.com',
-    password: 'writer123',
-    role: 'content-writer',
+    id: '3',
+    name: 'Ritika Iyer',
+    email: 'student@finedge.com',
+    password: 'student123',
+    role: 'student',
     avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
   },
   {
+    id: '4',
+    name: 'Vikram Shah',
+    email: 'writer@finedge.com',
+    password: 'writer123',
+    role: 'content-writer',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+  },
+  {
     id: '5',
-    name: 'Blog Writer',
+    name: 'Neha Kulkarni',
     email: 'blogger@finedge.com',
     password: 'blogger123',
     role: 'blogger',
@@ -67,19 +67,19 @@ const mockUsers: (User & { password: string })[] = [
   },
 ];
 
-// Role-based redirect mapping
+// Role-based redirect mapping - Fixed to match new routing structure
 const getRoleRedirectPath = (role: UserRole): string => {
   switch (role) {
     case 'admin':
       return '/admin';
     case 'instructor':
-      return '/dashboard/instructor';
+      return '/instructor';
     case 'student':
-      return '/dashboard/student';
+      return '/student';
     case 'content-writer':
-      return '/dashboard/content-writer';
+      return '/content-writer';
     case 'blogger':
-      return '/dashboard/blogger';
+      return '/blogger';
     default:
       return '/';
   }
