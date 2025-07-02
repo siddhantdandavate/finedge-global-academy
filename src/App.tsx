@@ -16,6 +16,9 @@ import RegisterPage from '@/pages/RegisterPage';
 import CoursesPage from '@/pages/CoursesPage';
 import CoursePlayer from '@/pages/CoursePlayer';
 import InstructorsPage from '@/pages/InstructorsPage';
+import WebinarsPage from '@/pages/WebinarsPage';
+import PodcastsPage from '@/pages/PodcastsPage';
+import BlogPage from '@/pages/BlogPage';
 import PaymentPage from '@/pages/PaymentPage';
 import AboutPage from '@/pages/AboutPage';
 import ContactPage from '@/pages/ContactPage';
@@ -48,6 +51,9 @@ function App() {
                   <Route path="/courses" element={<CoursesPage />} />
                   <Route path="/course/:id" element={<CoursePlayer />} />
                   <Route path="/instructors" element={<InstructorsPage />} />
+                  <Route path="/webinars" element={<WebinarsPage />} />
+                  <Route path="/podcasts" element={<PodcastsPage />} />
+                  <Route path="/blog" element={<BlogPage />} />
                   <Route path="/about" element={<AboutPage />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/blog/:id" element={<BlogDetail />} />

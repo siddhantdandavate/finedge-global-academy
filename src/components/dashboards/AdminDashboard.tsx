@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -35,6 +34,8 @@ import NotificationCenter from '@/pages/NotificationCenter';
 import FeedbackList from '@/components/feedback/FeedbackList';
 import DynamicContentManager from '@/components/admin/DynamicContentManager';
 import { Feedback } from '@/types/feedback';
+import UserManagement from '@/components/admin/UserManagement';
+import CourseManagement from '@/components/admin/CourseManagement';
 
 const AdminDashboard: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -174,8 +175,8 @@ const AdminDashboard: React.FC = () => {
         <Routes>
           <Route path="/" element={<AdminOverview stats={stats} recentActivities={recentActivities} getActivityIcon={getActivityIcon} getStatusColor={getStatusColor} />} />
           <Route path="/approvals" element={<ApprovalWorkflow />} />
-          <Route path="/users" element={<UserManagement />} />
-          <Route path="/courses" element={<CourseManagement />} />
+          <Route path="/users" element={<UserManagementWrapper />} />
+          <Route path="/courses" element={<CourseManagementWrapper />} />
           <Route path="/content" element={<ContentManagement />} />
           <Route path="/dynamic-content" element={<DynamicContentManager />} />
           <Route path="/media" element={<MediaLibrary />} />
@@ -365,29 +366,11 @@ const FeedbackManagement: React.FC<{ feedbacks: Feedback[] }> = ({ feedbacks }) 
   </div>
 );
 
+// Updated placeholder components to use the new functional ones
+const UserManagementWrapper: React.FC = () => <UserManagement />;
+const CourseManagementWrapper: React.FC = () => <CourseManagement />;
+
 // Placeholder components for other admin sections
-const UserManagement: React.FC = () => (
-  <div className="flex-1 p-6">
-    <h2 className="text-2xl font-bold mb-4">User Management</h2>
-    <Card>
-      <CardContent className="p-6">
-        <p>User management interface will be implemented here.</p>
-      </CardContent>
-    </Card>
-  </div>
-);
-
-const CourseManagement: React.FC = () => (
-  <div className="flex-1 p-6">
-    <h2 className="text-2xl font-bold mb-4">Course Management</h2>
-    <Card>
-      <CardContent className="p-6">
-        <p>Course management interface will be implemented here.</p>
-      </CardContent>
-    </Card>
-  </div>
-);
-
 const ContentManagement: React.FC = () => (
   <div className="flex-1 p-6">
     <h2 className="text-2xl font-bold mb-4">Content Management</h2>
