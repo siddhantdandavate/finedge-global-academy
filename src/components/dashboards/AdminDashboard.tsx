@@ -26,7 +26,9 @@ import {
   Award,
   Globe,
   Star,
-  Edit3
+  Edit3,
+  BarChart3,
+  Image as ImageIcon
 } from 'lucide-react';
 import ApprovalWorkflow from '@/components/admin/ApprovalWorkflow';
 import UserSettings from '@/pages/UserSettings';
@@ -36,6 +38,9 @@ import DynamicContentManager from '@/components/admin/DynamicContentManager';
 import { Feedback } from '@/types/feedback';
 import UserManagement from '@/components/admin/UserManagement';
 import CourseManagement from '@/components/admin/CourseManagement';
+import ContentManagementSystem from '@/components/admin/ContentManagementSystem';
+import MediaLibrary from '@/components/admin/MediaLibrary';
+import AnalyticsDashboard from '@/components/admin/AnalyticsDashboard';
 
 const AdminDashboard: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -89,19 +94,19 @@ const AdminDashboard: React.FC = () => {
     { icon: BookOpen, label: 'Course Management', path: '/admin/courses' },
     { icon: FileText, label: 'Content Management', path: '/admin/content' },
     { icon: Edit3, label: 'Dynamic Content', path: '/admin/dynamic-content' },
-    { icon: Video, label: 'Media Library', path: '/admin/media' },
+    { icon: ImageIcon, label: 'Media Library', path: '/admin/media' },
     { icon: Star, label: 'Feedback', path: '/admin/feedback' },
-    { icon: TrendingUp, label: 'Analytics', path: '/admin/analytics' },
+    { icon: BarChart3, label: 'Analytics', path: '/admin/analytics' },
     { icon: DollarSign, label: 'Revenue', path: '/admin/revenue' },
     { icon: Bell, label: 'Notifications', path: '/admin/notifications' },
     { icon: Settings, label: 'Settings', path: '/admin/settings' },
   ];
 
   const stats = [
-    { title: 'Total Users', value: '12,847', change: '+12%', icon: Users, color: 'blue' },
-    { title: 'Active Courses', value: '284', change: '+8%', icon: BookOpen, color: 'green' },
+    { title: 'Total Users', value: '18,247', change: '+12%', icon: Users, color: 'blue' },
+    { title: 'Active Courses', value: '247', change: '+8%', icon: BookOpen, color: 'green' },
     { title: 'Pending Approvals', value: '23', change: '+5%', icon: Clock, color: 'yellow' },
-    { title: 'Monthly Revenue', value: '$84,392', change: '+18%', icon: DollarSign, color: 'purple' },
+    { title: 'Monthly Revenue', value: '$58,392', change: '+18%', icon: DollarSign, color: 'purple' },
   ];
 
   const recentActivities = [
@@ -175,13 +180,13 @@ const AdminDashboard: React.FC = () => {
         <Routes>
           <Route path="/" element={<AdminOverview stats={stats} recentActivities={recentActivities} getActivityIcon={getActivityIcon} getStatusColor={getStatusColor} />} />
           <Route path="/approvals" element={<ApprovalWorkflow />} />
-          <Route path="/users" element={<UserManagementWrapper />} />
-          <Route path="/courses" element={<CourseManagementWrapper />} />
-          <Route path="/content" element={<ContentManagement />} />
+          <Route path="/users" element={<UserManagement />} />
+          <Route path="/courses" element={<CourseManagement />} />
+          <Route path="/content" element={<ContentManagementSystem />} />
           <Route path="/dynamic-content" element={<DynamicContentManager />} />
           <Route path="/media" element={<MediaLibrary />} />
           <Route path="/feedback" element={<FeedbackManagement feedbacks={feedbacks} />} />
-          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/analytics" element={<AnalyticsDashboard />} />
           <Route path="/revenue" element={<RevenueManagement />} />  
           <Route path="/notifications" element={<NotificationCenter />} />
           <Route path="/settings" element={<UserSettings />} />
@@ -230,7 +235,7 @@ const AdminOverview: React.FC<{
       {/* Recent Activities */}
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>Recent Activities</CardTitle>
+          <CardTitle>Recent Platform Activity</CardTitle>
           <CardDescription>Latest submissions and platform activities</CardDescription>
         </CardHeader>
         <CardContent>
@@ -290,7 +295,7 @@ const AdminOverview: React.FC<{
         <Card className="hover:shadow-lg transition-shadow">
           <CardHeader>
             <CardTitle className="flex items-center">
-              <TrendingUp className="h-5 w-5 mr-2 text-purple-600" />
+              <BarChart3 className="h-5 w-5 mr-2 text-purple-600" />
               Analytics
             </CardTitle>
           </CardHeader>
@@ -366,44 +371,7 @@ const FeedbackManagement: React.FC<{ feedbacks: Feedback[] }> = ({ feedbacks }) 
   </div>
 );
 
-// Updated placeholder components to use the new functional ones
-const UserManagementWrapper: React.FC = () => <UserManagement />;
-const CourseManagementWrapper: React.FC = () => <CourseManagement />;
-
-// Placeholder components for other admin sections
-const ContentManagement: React.FC = () => (
-  <div className="flex-1 p-6">
-    <h2 className="text-2xl font-bold mb-4">Content Management</h2>
-    <Card>
-      <CardContent className="p-6">
-        <p>Content management interface will be implemented here.</p>
-      </CardContent>
-    </Card>
-  </div>
-);
-
-const MediaLibrary: React.FC = () => (
-  <div className="flex-1 p-6">
-    <h2 className="text-2xl font-bold mb-4">Media Library</h2>
-    <Card>
-      <CardContent className="p-6">
-        <p>Media library interface will be implemented here.</p>
-      </CardContent>
-    </Card>
-  </div>
-);
-
-const Analytics: React.FC = () => (
-  <div className="flex-1 p-6">
-    <h2 className="text-2xl font-bold mb-4">Analytics</h2>
-    <Card>
-      <CardContent className="p-6">
-        <p>Analytics dashboard will be implemented here.</p>
-      </CardContent>
-    </Card>
-  </div>
-);
-
+// Revenue Management Component
 const RevenueManagement: React.FC = () => (
   <div className="flex-1 p-6">
     <h2 className="text-2xl font-bold mb-4">Revenue Management</h2>

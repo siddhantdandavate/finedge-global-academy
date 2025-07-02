@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '@/contexts/AuthContext';
@@ -26,6 +25,8 @@ import BlogDetail from '@/pages/BlogDetail';
 import NotFound from '@/pages/NotFound';
 import NotificationCenter from '@/pages/NotificationCenter';
 import UserSettings from '@/pages/UserSettings';
+import HelpCenter from '@/pages/HelpCenter';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
 
 // Dashboards
 import StudentDashboard from '@/components/dashboards/StudentDashboard';
@@ -57,6 +58,8 @@ function App() {
                   <Route path="/about" element={<AboutPage />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/blog/:id" element={<BlogDetail />} />
+                  <Route path="/help" element={<HelpCenter />} />
+                  <Route path="/privacy" element={<PrivacyPolicy />} />
                   
                   {/* Protected Routes */}
                   <Route path="/payment" element={

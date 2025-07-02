@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import SimpleChatbot from '@/components/ai/SimpleChatbot';
+import EnhancedChatbot from '@/components/ai/EnhancedChatbot';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -8,13 +8,16 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [chatbotOpen, setChatbotOpen] = useState(false);
+  const [chatbotMinimized, setChatbotMinimized] = useState(false);
 
   return (
     <>
       {children}
-      <SimpleChatbot 
-        isOpen={chatbotOpen} 
-        onToggle={() => setChatbotOpen(!chatbotOpen)} 
+      <EnhancedChatbot
+        isOpen={chatbotOpen}
+        onToggle={() => setChatbotOpen(!chatbotOpen)}
+        isMinimized={chatbotMinimized}
+        onMinimize={() => setChatbotMinimized(!chatbotMinimized)}
       />
     </>
   );
