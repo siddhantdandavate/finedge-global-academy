@@ -15,8 +15,10 @@ import {
   Youtube,
   Download
 } from 'lucide-react';
+import { useContent } from '@/contexts/ContentContext';
 
 export const Footer: React.FC = () => {
+  const { content } = useContent();
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
@@ -63,46 +65,44 @@ export const Footer: React.FC = () => {
                 <BookOpen className="h-6 w-6 text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-blue-400 bg-clip-text text-transparent">
-                Finedge
+                {content.branding.siteName}
               </span>
             </Link>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Empowering Indian Chartered Accountants worldwide with comprehensive courses, 
-              expert-led training, and cutting-edge learning tools. Join 250,000+ CA professionals 
-              advancing their careers with Finedge.
+              {content.branding.tagline}
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-center space-x-3 text-gray-300">
                 <Mail className="h-4 w-4 text-orange-400" />
-                <span>support@finedge.in</span>
+                <span>{content.contact.email}</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <Phone className="h-4 w-4 text-orange-400" />
-                <span>+91 98765 43210</span>
+                <span>{content.contact.phone}</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <MapPin className="h-4 w-4 text-orange-400" />
-                <span>Bandra Kurla Complex, Mumbai, Maharashtra 400051</span>
+                <span>{content.contact.address}</span>
               </div>
             </div>
 
             {/* Social Media */}
             <div className="flex space-x-4">
-              <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white hover:bg-blue-600">
+              <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white hover:bg-blue-600" onClick={() => window.open(content.social.facebook, '_blank')}>
                 <Facebook className="h-4 w-4" />
               </Button>
-              <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white hover:bg-blue-400">
+              <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white hover:bg-blue-400" onClick={() => window.open(content.social.twitter, '_blank')}>
                 <Twitter className="h-4 w-4" />
               </Button>
-              <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white hover:bg-blue-700">
+              <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white hover:bg-blue-700" onClick={() => window.open(content.social.linkedin, '_blank')}>
                 <Linkedin className="h-4 w-4" />
               </Button>
-              <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white hover:bg-pink-600">
+              <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white hover:bg-pink-600" onClick={() => window.open(content.social.instagram, '_blank')}>
                 <Instagram className="h-4 w-4" />
               </Button>
-              <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white hover:bg-red-600">
+              <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white hover:bg-red-600" onClick={() => window.open(content.social.youtube, '_blank')}>
                 <Youtube className="h-4 w-4" />
               </Button>
             </div>
@@ -203,7 +203,7 @@ export const Footer: React.FC = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0 flex items-center">
-              <span>© {currentYear} Finedge. All rights reserved.</span>
+              <span>© {currentYear} {content.branding.siteName}. All rights reserved.</span>
               <span className="mx-2">|</span>
               <span className="flex items-center">
                 Made in 🇮🇳 India | Empowering Chartered Accountants Globally

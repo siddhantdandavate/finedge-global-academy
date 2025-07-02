@@ -19,7 +19,8 @@ import {
   LayoutDashboard,
   Menu,
   X,
-  MessageSquare
+  MessageSquare,
+  BookOpen
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useContent } from '@/contexts/ContentContext';
@@ -51,23 +52,16 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-white shadow-sm border-b sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-2">
-                <img 
-                  src={content.branding.logo.primary} 
-                  alt={content.branding.logo.alt}
-                  className="h-8 w-auto"
-                  onError={(e) => {
-                    // Fallback to text logo if image fails to load
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                  }}
-                />
-                <span className="hidden text-xl font-bold text-gray-900">
+                <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-blue-600 rounded-lg flex items-center justify-center">
+                  <BookOpen className="h-6 w-6 text-white" />
+                </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-blue-600 bg-clip-text text-transparent">
                   {content.branding.siteName}
                 </span>
               </Link>
@@ -79,7 +73,7 @@ export const Header: React.FC = () => {
                 <Link
                   key={item.href}
                   to={item.href}
-                  className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors"
+                  className="text-gray-600 hover:text-orange-600 px-3 py-2 text-sm font-medium transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -161,7 +155,9 @@ export const Header: React.FC = () => {
                     <Button variant="ghost" size="sm">Login</Button>
                   </Link>
                   <Link to="/register">
-                    <Button size="sm">Register</Button>
+                    <Button size="sm" className="bg-gradient-to-r from-orange-500 to-blue-600 hover:from-orange-600 hover:to-blue-700">
+                      Register
+                    </Button>
                   </Link>
                 </div>
               )}
@@ -186,7 +182,7 @@ export const Header: React.FC = () => {
                   <Link
                     key={item.href}
                     to={item.href}
-                    className="text-gray-600 hover:text-gray-900 block px-3 py-2 text-base font-medium"
+                    className="text-gray-600 hover:text-orange-600 block px-3 py-2 text-base font-medium"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
